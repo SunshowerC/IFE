@@ -1,0 +1,67 @@
+
+html,body,ul,li {
+	padding: 0;
+	margin:0;
+	list-style: none;
+}
+
+#content {
+	margin: 30px auto 0;
+	width:85%;
+	background-color: #eee;
+	border: 1px solid #999;
+	position: relative;
+	overflow: hidden;
+}
+
+#team_info {
+	width:160px;
+	padding: 20px;
+	margin: 20px 0 0 20px;
+	float: left;
+	border: 1px solid #999;
+	background-color: white;
+	
+}
+
+
+
+#team_info span {
+	text-align: center;
+	width:75px;
+	float: right;
+
+}
+
+aside {
+	width: 80px;
+	padding: 20px;
+	margin: 20px 20px 20px 0;
+	border: 1px solid #999;
+	background-color: white;	
+	float:right;
+/* 	position: absolute;
+right: 0;
+top: 0; */
+}
+
+aside li:not(:last-child) {
+	margin-bottom:20px; 
+}
+
+#team_intro {
+	margin:20px 160px 20px 240px ;
+	border: 1px solid #999;
+	background-color: white;	
+	padding: 20px;
+}
+
+#team_intro p {
+	text-indent: 2em;
+	line-height: 1.6;
+}
+
+img {
+	width: 80px;
+	height: 80px;
+}

@@ -1,0 +1,205 @@
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.container,.container>div {
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+.ranking-list table {
+	margin: 0 auto 50px auto;
+}
+
+.ranking-list tbody tr:nth-child(2n) {
+	background-color: #ededed;
+}
+
+.ranking-list tbody tr:nth-child(-n+3) {
+	color :red;
+}
+
+.ranking-list thead tr {
+	background: #aaa;
+}
+
+input[type="text"] {
+	width: 100px;
+	transition: width 1s;
+	-moz-transition: width 1s;	/* Firefox 4 */
+	-webkit-transition: width 1s;	/* Safari 和 Chrome */
+	-o-transition: width 1s;	/* Opera */
+	
+}
+
+input[type="text"]:focus {
+	width:200px;
+}
+
+#banner {
+	position: relative;
+	width: 300px;
+	height: 150px;
+	overflow: hidden;
+	margin: 50px auto 0 auto;
+
+}
+
+#banner ul {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	list-style: none;
+	
+}
+
+#banner ul li  {
+	float: left;
+
+	margin: 0 0 0 10px;
+
+}
+
+#banner ul li  label{
+	background:rgba(255,255,255,0.6);
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #232323;
+	text-decoration: none;
+}
+
+#banner input {
+	display: none;
+}
+
+#wrap{
+position: absolute;
+left: 0%;
+width: 900px;
+height: 150px;
+overflow: hidden;
+-webkit-transition: left 1s;
+-moz-transition: left 1s;
+-ms-transition: left 1s;
+-o-transition: left 1s;
+transition: left 1s;
+
+}
+
+
+
+#wrap div {
+	width: 300px;
+	height: 150px;
+	float:left;
+}
+
+#wrap div:nth-child(1) {
+	background-color: skyblue;
+
+}
+
+#wrap div:nth-child(2){
+
+	background-color: red;
+}
+
+#wrap div:nth-child(3){
+
+	background-color: green;
+}
+
+#banner-1:checked~#wrap {
+	left:0;
+}
+
+#banner-2:checked~#wrap {
+	left:-100%;
+}
+
+#banner-3:checked~#wrap {
+	left:-200%;
+}
+
+#banner ul li label:hover {
+	cursor: pointer;
+}
+
+/*
+#banner {
+	position: relative;
+	width: 300px;
+	height: 150px;
+//	overflow: hidden;
+	margin: 50px auto 0 auto;
+	background: skyblue;
+}
+
+#banner-1 {
+	width: 300px;
+	height: 150px;
+	position: absolute;
+	left: 0;
+	background-color: #ddd;
+}
+
+#banner-2 {
+	width: 300px;
+	height: 150px;
+	position: absolute;
+	left:100%;
+	background: red;	
+}
+
+#banner-3 {
+	width: 300px;
+	height: 150px;
+	position: absolute;
+	left:200%;
+	background: green;	
+}
+
+#banner ul {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	list-style: none;
+	z-index: 99;
+}
+
+#banner ul li  {
+	float: left;
+
+	margin: 0 0 0 10px;
+
+}
+
+#banner ul li  a{
+	background:rgba(255,255,255,0.6);
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #232323;
+	text-decoration: none;
+}
+
+#banner-1:target {
+	left:0;
+}
+
+#banner-2:target {
+	left:0%;
+}
+
+#banner-3:target {
+	left:0%;
+}
+*/
