@@ -24,8 +24,8 @@
  	var bj_air = document.getElementById("aqi-input");
  	var input_value = document.getElementById("aqi-display");
  	btn.onclick =function(){
- 		input_value.innerHTML = bj_air.value;
- 		if (!bj_air.value) input_value.innerHTML ="尚无录入";
+ 		input_value.textContent = bj_air.value;
+ 		if (!bj_air.value) input_value.textContent ="尚无录入";
  	}
  	
 
