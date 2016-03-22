@@ -39,7 +39,7 @@ var aqiData = [
 	for (var i = 0 ; i<aqiData.length ;i++) {
 	 		if(aqiData[i][1] > 60){
 	 			var newlist = document.createElement('li');
-	 			newlist.textContent = "第一名："+aqiData[i];
+	 			newlist.textContent = "第"+(i+1)+"名："+aqiData[i];
 	 			ulist.appendChild(newlist);
 	 		}
 	 	}
