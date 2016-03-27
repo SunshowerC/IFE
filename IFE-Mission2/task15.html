@@ -54,12 +54,13 @@ function sort_num(a,b){
 
 console.log(sortAqiData( getData() ) + ""); //测试
 
+
 function render(data) {
   var resort = document.getElementById("resort");
 
   for ( var i=0; i < data.length;i++) {
     var resort_li = document.createElement("li");
-    // var li_b = resort_li.createElement("b")
+// var li_b = resort_li.createElement("b")
     resort_li.innerHTML = "第"+(i+1)+"名："+ data[i][0]+"空气质量："+"<b>"+data[i][1]+"</b>";
     resort.appendChild(resort_li);
   }

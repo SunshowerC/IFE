@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务十六</title>
+	<style type="text/css">
+		#aqi-table,th,td {
+			border: 1px solid #666;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		th,td {
+			width:100px;
+			height: 1.5em;
+		}
+
+		th {
+			background: lightblue;
+			color: #fff;
+		}
+		
+		#add-btn {
+			background: skyblue;
+			border:0;
+			height: 2em;
+			margin: 20px 0 20px 0;
+			color: #efefef;
+		}
+	</style>
+</head>
+<body>
+
+  <div>
+    <label>城 市 名 称 ：<input id="aqi-city-input" type="text"></label><br><br>
+    <label>空气质量指数：<input id="aqi-value-input" type="text"></label><br>
+    <button id="add-btn">确认添加</button>
+  </div>
+  <table id="aqi-table">
+	<thead>
+	    <tr>
+	      <th>城市</th><th>空气质量</th><th>操作</th>
+	    </tr>
+    </thead>
+    <tbody>
+<!--      <tr>
+      <td>北京</td><td>90</td><td><button>删除</button></td>
+    </tr>
+    <tr>
+      <td>北京</td><td>90</td><td><button>删除</button></td>
+    </tr>
+-->     	
+    </tbody>
+
+  </table>
+  <script type="text/javascript" src="js/task16.js"></script>
+</body>
+</html>

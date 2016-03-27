@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+fieldset {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0 0 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.day {
+  width:3%;
+}
+
+.week {
+  width:7%;
+}
+
+.month {
+  width: 30%;
+}
+
+.aqi-chart-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;  
+
+  border:1px solid #888;
+  border-radius: 5px;
+  width: 90%;
+  height: 60%;
+  margin: 20px auto 0 auto;
+}
