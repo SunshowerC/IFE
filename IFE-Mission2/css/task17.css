@@ -41,8 +41,36 @@ fieldset {
           align-items: flex-end;  
 
   border:1px solid #888;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 7px rgba(3,3,3,0.3);
   width: 90%;
-  height: 60%;
+  height: 550px;
   margin: 20px auto 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.aqi-chart-wrap div {
+  box-shadow: 3px -2px 6px rgba(0,0,0,0.5);
+  opacity: 0.6;
+  position: relative;
+  bottom: 0%;
+
+  -webkit-animation: slidein 0.8s ;
+          animation: slidein 0.8s ;
+}
+
+.aqi-chart-wrap div:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+@-webkit-keyframes slidein {
+  from{ bottom: -100%; }
+  to { bottom: 0; }
+}
+
+@keyframes slidein {
+  from{ bottom: -100%; }
+  to { bottom: 0; }  
 }
