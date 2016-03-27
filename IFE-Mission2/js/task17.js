@@ -17,11 +17,6 @@ var aqiSourceData = {
 };
 */
 
-var month_num = [31,29,31];
-var day_data = [];
-var week_data = [];
-var month_data = [];
-
 // 以下两个函数用于随机模拟生成测试数据
 function getDateStr(dat) {
   var y = dat.getFullYear();
