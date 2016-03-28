@@ -1,0 +1,47 @@
+
+.block_wrap div p {
+	margin-top: -15px;
+	color: red;
+
+}
+
+.input {
+	margin: 0 0 50px 0;
+}
+
+.block_wrap {
+	height: 400px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	    -ms-flex-flow: row nowrap;
+	        flex-flow: row nowrap;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
+	        align-items: flex-end;
+	
+}
+
+
+
+.block_wrap div {
+	margin: 1px;
+	width: 17px;
+	opacity: 0.6;
+	color: #fff;
+
+	font-size: 12px;
+	display: inline-block;
+	background: skyblue;
+	text-align: center;
+	
+	
+}
+
+.block_wrap div:hover {
+	cursor: pointer;
+	opacity: 1;
+}
