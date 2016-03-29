@@ -23,12 +23,18 @@ function remove_clicked(obj){
 function tag_handle(){
 	
 	var block = document.createElement("div");
+	var now_div = tag_wrap.getElementsByTagName('div');
 	if (trim(tag.value)=="") { alert("请输入东西!"); return false; }
+	//去重
+	for (var i = 0; i < now_div.length; i++) {
+		if( trim(tag.value) == now_div[i].innerText ) { alert('该元素已存在！'); return false;}
+	}
 	block.innerHTML= trim(tag.value);
 	tag_wrap.appendChild(block);
 	remove_clicked(block);
 	tag.value = "";
-	var now_div = tag_wrap.getElementsByTagName('div');
+	
+	//标签个数多于10,删除最前的
 	while (now_div.length > 10) {
 		tag_wrap.removeChild(now_div[0]);
 		now_div = tag_wrap.getElementsByTagName('div');
@@ -40,16 +46,23 @@ function tag_handle(){
 function text_handle(){
 	var text = document.getElementsByTagName("textarea")[0].value;
 	var now_text = text.split(/[,，;；、\s]+/);
+
+	var now_div = habit_wrap.getElementsByTagName('div');
 //	console.log(now_text);
 	for (var i = 0; i < now_text.length; i++) {
+		if (now_text[i]=='') { now_text.splice(i,1); }  //分割后如产生空元素，删除空元素
+		//去重
+		for (var j = 0; j < now_div.length; j++) {
+			if( now_text[i] == now_div[j].innerText ) { return false; }
+		}
 		var block = document.createElement("div");
-//		if (now_text[i]=='') { now_text.splice(i,1); }
+		
 		block.innerHTML= now_text[i]; 
 		habit_wrap.appendChild(block);
 		remove_clicked(block);
 	}
 	
-	var now_div = habit_wrap.getElementsByTagName('div');
+	//标签个数多于10,删除最前的
 	while (now_div.length > 10) {
 		habit_wrap.removeChild(now_div[0]);
 		now_div = habit_wrap.getElementsByTagName('div');
