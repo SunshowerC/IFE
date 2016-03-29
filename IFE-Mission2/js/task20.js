@@ -47,10 +47,11 @@ function render() {
 			case "右侧出" :
 				wrap.removeChild(wrap.lastElementChild);break;		
 			case "查询" :
-				if(find_text==""){ alert("魂淡，啥都没输入啊！");return false; }
+				if(find_text.replace(/\s/g,'')==""){ alert("魂淡，啥都没输入啊！");return false; }
 				var now_div = wrap.getElementsByTagName("div");
 				for (var i = 0; i < now_div.length; i++) {
-					if( now_div[i].innerText.indexOf(find_text) >=0 )    {
+					now_div[i].style.backgroundColor = 'skyblue';
+					if( now_div[i].innerText.indexOf(find_text.replace(/\s/g,'')) >=0 )    {
 						now_div[i].style.backgroundColor = 'red';
 					}
 				}

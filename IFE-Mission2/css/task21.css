@@ -1,0 +1,38 @@
+
+#tag_wrap div {
+	display: inline-block;
+	margin: 10px;
+	line-height: 36px;
+	font-size: 40px;
+	padding: 0 8px;
+	background-color: #8BCAFF;
+	color: #fff;
+}
+
+#tag_wrap div:hover,#habit_wrap div:hover {
+	background-color: #ef0000;
+	cursor: pointer;
+
+}
+#tag_wrap div:hover:before,#habit_wrap div:hover:before{
+	content: "删除元素";
+}
+
+#habit_wrap {
+	margin: 30px 0 0 0;
+}
+
+#habit_wrap div {
+	background-color: #FFC984;
+	display: inline-block;
+	margin: 10px;
+	line-height: 46px;
+	font-size: 40px;
+	padding: 0 8px;
+	color: #fff;
+}
+
+textarea {
+	margin: 10px 0;
+} 
+
