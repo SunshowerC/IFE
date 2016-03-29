@@ -3,7 +3,7 @@
 	display: inline-block;
 	margin: 10px;
 	line-height: 36px;
-	font-size: 40px;
+	font-size: 30px;
 	padding: 0 8px;
 	background-color: #8BCAFF;
 	color: #fff;
@@ -26,8 +26,8 @@
 	background-color: #FFC984;
 	display: inline-block;
 	margin: 10px;
-	line-height: 46px;
-	font-size: 40px;
+	line-height: 36px;
+	font-size: 30px;
 	padding: 0 8px;
 	color: #fff;
 }
