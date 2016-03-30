@@ -32,14 +32,15 @@ function tag_handle(){
 	block.innerHTML= trim(tag.value);
 	tag_wrap.appendChild(block);
 	remove_clicked(block);
-	tag.value = "";
 	
+	tag.value = null;
 	//标签个数多于10,删除最前的
 	while (now_div.length > 10) {
 		tag_wrap.removeChild(now_div[0]);
 		now_div = tag_wrap.getElementsByTagName('div');
 //		console.log(now_div.length);
 	}	
+
 }
 
 /*textarea处理事件*/
@@ -71,7 +72,7 @@ function text_handle(){
 }
 
 function handle_init(){
-	var tag = document.getElementById("tag");
+//	var tag = document.getElementById("tag");
 
 	tag.onkeydown=function(event){
 	    var e = event || window.event || arguments.callee.caller.arguments[0];
@@ -83,8 +84,9 @@ function handle_init(){
 	       }            
 	    if(e && e.keyCode==13 || e.keyCode==32 ||e.keyCode==188){ // enter 键
 	        tag_handle();
-
+	        
 	    }
+	    
 	}
 
 	habit_btn.onclick = function(){

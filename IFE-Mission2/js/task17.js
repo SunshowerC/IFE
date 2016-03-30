@@ -199,10 +199,11 @@ function initAqiChartData() {
     d.setDate(d.getDate()+1);
     i++;
     sum += chartData.date_aqi[date];
+
     if(d.getMonth()!=month){
       chartData.month_aqi['第'+(month+1)+'月'] = parseInt(sum/i);
-//      console.log(i);
-//      console.log(chartData.month_aqi);
+      console.log(i);
+      console.log(chartData.month_aqi);
       month++;sum = 0;i = 0;      
     }
   }
@@ -219,6 +220,7 @@ function init() {
   initGraTimeForm()
   initCitySelector();
   initAqiChartData();
+  console.log(chartData);
 
 }
 
