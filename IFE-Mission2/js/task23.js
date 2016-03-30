@@ -147,8 +147,7 @@ function btn_handle() {
 		btn[i].onclick = function(){
 			btn_clicked(i);
 
-		};
-		
+		};		
 	}
 
 }
