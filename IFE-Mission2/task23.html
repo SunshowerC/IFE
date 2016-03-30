@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务二十三</title>
+	<style type="text/css">
+
+
+		div  {
+			box-sizing: border-box;
+			display: inline-block;
+			background-color: #fff;
+			border: 1px solid #888; 
+			margin: 10px;
+			float:left;
+			padding: 10px;
+			overflow: hidden;
+		}
+
+		.depth_4 {
+			
+			width: 60px;
+			height: 80px;
+		}
+	
+		.root {
+			display: block;
+			width: 90%;
+			margin: 50px auto;
+			float:none;
+		}	
+
+		button {
+			background-color: #8BCAFF;
+			padding: 3px 5px;
+			color: #fff;
+			border: 0;
+			border-radius: 5px;
+			margin: 10px;
+			opacity: 0.8;
+			line-height: 26px;
+			font-size: 22px;
+			box-shadow: 0 0 6px #8BCAFF;
+		}		
+		button:hover {
+			opacity: 1;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="js/task23.js"></script>
+
+</head>
+<body>
+	<center>
+		
+			<button>深度优先遍历</button><button>广度优先遍历</button><br />
+			<input type="text" name='search' id='search' />   <br />
+			<button>深度优先检索</button><button>广度优先检索</button>
+			
+		
+	</center>
+	<div class="root">
+		<div class="depth_2">智能
+			<div class="depth_3">
+				<div class="depth_4">颓废</div>
+				<div class="depth_4">智慧</div>
+				<div class="depth_4">潇洒</div>
+				<div class="depth_4">笑啥</div>智障
+			</div>
+			<div class="depth_3">
+				<div class="depth_4">小傻</div>
+			胡渣
+			</div>
+			<div class="depth_3">波函数
+				<div class="depth_4">屎</div>
+				<div class="depth_4">傅里叶变换</div>
+			</div>			
+		</div>
+		宿命
+		<div class="depth_2">硬盘
+			<div class="depth_3">天才
+				<div class="depth_4">美男子</div>
+				<div class="depth_4">陨石</div>
+				<div class="depth_4">娇花</div>
+			</div>
+			<div class="depth_3">肉质
+				<div class="depth_4">懵逼</div>
+			</div>
+			<div class="depth_3">
+				幼稚
+			</div>
+			<div class="depth_3">拿衣服
+				<div class="depth_4">开挂</div>
+			</div>						
+		</div>
+		<div class="depth_2">大黄
+			<div class="depth_3">酱油
+				<div class="depth_4">尿遁</div>
+				<div class="depth_4">蛋疼</div>
+			</div>
+		</div>		
+	</div>
+
+	
+</body>
+
+</html>
