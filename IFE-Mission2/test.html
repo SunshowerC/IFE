@@ -3,63 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <title>test</title>
-</head>
-<body>
-   <ul id="source">
-    <li>北京空气质量：<b>90</b></li>
-    <li>上海空气质量：<b>70</b></li>
-    <li>天津空气质量：<b>80</b></li>
-    <li>广州空气质量：<b>50</b></li>
-    <li>深圳空气质量：<b>40</b></li>
-    <li>福州空气质量：<b>32</b></li>
-    <li>成都空气质量：<b>90</b></li>
-  </ul> 
+  <style type="text/css">
 
-  <ul id="resort">
-    <!-- 
-    <li>第一名：北京空气质量：<b>90</b></li>
-    <li>第二名：北京空气质量：<b>90</b></li>
-    <li>第三名：北京空气质量：<b>90</b></li>
-     -->
 
-  </ul>  
-</body>
-
-<script type="text/javascript">
-
-    function sortAqiData(data) {
-        data.sort(function(a,b){
-            return a[1]-b[1];
-        });
-        return data;
+    div  {
+      box-sizing: border-box;
+      display: inline-block;
+      background-color: #fff;
+      border: 1px solid #888; 
+      margin: 10px;
+      float:left;
+      padding: 10px;
+      overflow: hidden;
     }
 
-/*将li中文本提取，通过substr截取对应文本，并通过push合并成一个数组*/
+    .depth_4 {
+      
+      width: 60px;
+      height: 80px;
+    }
+  
+    .root {
+      display: block;
+      width: 90%;
+      margin: 50px auto;
+      float:none;
+    } 
 
-function getData() {
-  var source = document.getElementById("source");
-  var src_li = document.getElementsByTagName("li");
-  var data = [];
-  for (var i = 0; i < src_li.length; i++) {
-    data.push( [src_li[i].innerText.substr(0,2),src_li[i].innerText.substr(-2,2)] )
-  }
-  return data;
-}
+    button {
+      background-color: #8BCAFF;
+      padding: 3px 5px;
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      margin: 10px;
+      opacity: 0.7;
+      line-height: 26px;
+      font-size: 22px;
+      box-shadow: 0 0 6px #8BCAFF;
+    }   
+    button:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  </style>
+  <script type="text/javascript" src="js/test.js"></script>
 
-/*
-function sortAqiData(data){
-data.sort(sort_num);
-return data;
-}
-*/
+</head>
+<body>
+  <center>
+    <button>深度优先遍历</button><button>广度优先遍历</button><br />
+    <button>深度优先检索</button><input type="text" name='search' id='search' placeholder="请输入检索内容" /><button>广度优先检索</button><br />
+    <button>删除</button><input type="text" name="add" id="add" placeholder="请输入添加的元素内容" /><button>添加</button>
+      
+  </center>
+  <div class="root">
+    <div class="depth_2">智能
+      <div class="depth_3">
+        <div class="depth_4">颓废</div>
+        <div class="depth_4">智慧</div>
+        <div class="depth_4">潇洒</div>
+        <div class="depth_4">笑啥</div>智障
+      </div>
+      <div class="depth_3">
+        <div class="depth_4">小傻</div>
+      胡渣
+      </div>
+      <div class="depth_3">波函数
+        <div class="depth_4">屎</div>
+        <div class="depth_4">傅里叶变换</div>
+      </div>      
+    </div>
+    宿命
+    <div class="depth_2">硬盘
+      <div class="depth_3">天才
+        <div class="depth_4">美男子</div>
+        <div class="depth_4">陨石</div>
+        <div class="depth_4">娇花</div>
+      </div>
+      <div class="depth_3">肉质
+        <div class="depth_4">懵逼</div>
+      </div>
+      <div class="depth_3">
+        幼稚
+      </div>
+      <div class="depth_3">拿衣服
+        <div class="depth_4">开挂</div>
+      </div>            
+    </div>
+    <div class="depth_2">大黄
+      <div class="depth_3">酱油
+        <div class="depth_4">尿遁</div>
+        <div class="depth_4">蛋疼</div>
+      </div>
+    </div>    
+  </div>
 
-/*
-document.write(sortAqiData()+"<br />")
-*/
-function sort_num(a,b){
-    return a[1]-b[1];
-  }
-
-</script>
+  
+</body>
 
 </html>
