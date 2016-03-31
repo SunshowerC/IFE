@@ -43,7 +43,9 @@ ul,li{
 }
 
 .wrap div {
-	background:url(../img/24down.png) no-repeat 0px 3px;
+	background-image:url(../img/24down.png);
+	background-repeat:no-repeat;
+	background-position: 0 3px;
 	background-color: #8BCAFF;
 /* 	border-top: 1px solid #fff; */
 	margin: 10px 0 10px 10px;

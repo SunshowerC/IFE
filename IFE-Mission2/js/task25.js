@@ -179,8 +179,8 @@ function div_clicked_init() {
 	var node_list = [] ;
 	var root_node = document.getElementsByClassName('root')[0];	
 	var bg_img =new Array();
-	bg_img[0] =  'url("./img/24right.png") 0px 3px no-repeat rgb(139, 202, 255)';
-	bg_img[1] =  'url("./img/24down.png") 0px 3px no-repeat rgb(139, 202, 255)';
+	bg_img[0] =  'url("./img/24right.png") 0 3px rgb(139, 202, 255) no-repeat';
+	bg_img[1] =  'url("./img/24down.png") 0 3px rgb(139, 202, 255) no-repeat';
 
 	depth_order(root_node,node_list);
 	addEvent('click',root_node,function(ev){
@@ -192,18 +192,20 @@ function div_clicked_init() {
 			}
 			target.id = 'clicked';
 
-			if( target.style.background == bg_img[0] ){
+			if( target.isfold ){
 				target.style.background = bg_img[1];
-				isfold = false;
+				target.isfold = false;
+				console.log('1');
 			}
 			else {
 				target.style.background = bg_img[0];
-				isfold  = true ;
+				target.isfold  = true ;
+				console.log('2');
 			}
 			
-/*			console.log(target.style.background);
-			console.log(bg_img[0]);
-			console.log(bg_img[1]);*/
+			console.log(target.isfold);
+			console.log(target.style.backgroundImage);
+		
 			for (var i = 0; i < target.childNodes.length; i++) {
 
 				if(target.childNodes[i].nodeType == 1) {
