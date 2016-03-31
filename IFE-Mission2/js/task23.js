@@ -142,13 +142,18 @@ function btn_handle() {
 	addEvent('click',btn[3],function(){
 		btn_clicked(3);
 	});	*/		
-	
-	for (var i = 0; i < btn.length; i++) {
+
+for (var i = 0; i < btn.length; i++) {
+	(function(i){
 		btn[i].onclick = function(){
 			btn_clicked(i);
+		}
+	}(i));
 
-		};		
-	}
+
+};	
+		
+
 
 }
 
