@@ -1,6 +1,6 @@
 var i_def = 0;  //广度优先遍历 标识
 var stop;   //setInterval 句柄
-var isfold;   //是否折叠
+var fold = false;   //是否折叠
 
 /*深度优先遍历*/
 function depth_order(node,node_list) {
@@ -152,7 +152,8 @@ function add_element() {
 	if ( text=='' ) { alert('请输入要添加的元素内容'); return false; }
 	if (!div_clicked) { alert('请选择节点元素'); return false;  }
 	div_created.innerText = text;
-	if (isfold) { div_created.style.display = 'none'; }
+	if (div_clicked.isfold) { div_created.style.display = 'none'; }
+//	console.log(div_clicked.isfold);
 	div_clicked.appendChild(div_created);
 	
 }
