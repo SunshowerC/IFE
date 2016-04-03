@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十一</title>
+	<link rel="stylesheet" type="text/css" href="css/task31.css">
+</head>
+<body>
+	<form>
+		<label><input type="radio" name="is_in_sch" value="in_school" checked="checked" /><span></span>在校生</label>
+		<label><input type="radio" name="is_in_sch" value="out_school" /><span></span><span>非在校生</span></label>
+		<label class="inSchool">学校：
+			<select id="city">
+				<option value="北京">北京</option>
+				<option value="上海">上海</option>
+				<option value="深圳">深圳</option>
+			</select>
+			<select id="school">
+				<option value="清华大学">清华大学</option>
+				<option value="北京大学">北京大学</option>
+			</select>		
+<!-- 			<select>
+								<option>上海大学</option>
+								<option>复旦大学</option>
+								<option>上海交通大学</option>
+							</select>	
+							<select>
+								<option>深圳大学</option>
+								<option>华中科技大学</option>
+							</select>	 -->							
+		</label>
+
+		<label class="outSchool">就业公司：
+			<input type="text" name="company"  />
+		</label>
+	</form>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/task31.js"></script>
+</body>
+</html>
