@@ -12,8 +12,8 @@ var getForm = document.querySelector('.getForm');
 function setState(tips,obj,stateText) {
 	obj.className ='';
 	tips.className='tips ';
-	console.log(stateText);
-	console.log( Boolean(stateText.indexOf('正确')) );
+//	console.log(stateText);
+//	console.log( Boolean(stateText.indexOf('正确')) );
 	if ( stateText.indexOf('正确') != -1 ) {
 		obj.className += 'correct';
 		tips.className += 'correct';		
@@ -59,7 +59,7 @@ function formFactory() {
 	var box = getForm.getElementsByTagName('input');
 	var  btn = document.createElement('button');
 	btn.innerText = '提　交';
-	creatFormBtn.onclick = function(){
+	addEvent('click',creatFormBtn,function(){
 		form.innerHTML = '';
 		for (var i = 0; i < box.length; i++) {
 			if (box[i].checked && i == 1) {      //特殊情况，当生成密码输入框时，密码框+验证框同时添加
@@ -71,7 +71,7 @@ function formFactory() {
 			}
 		}
 	form.appendChild(btn);		
-	}
+	});
 }
 
 /*
@@ -91,8 +91,8 @@ function init() {
 	formFactory();
 	var inp = form.getElementsByTagName('input');
 	var btn = document.getElementById('submit');	
-	form.onclick = function(e) {
-		var e = e || window.event;
+	addEvent('click',form, function(e) {
+		e = e || window.event;
 		var target = e.target || e.srcElement;
 		if ( target.nodeName.toLowerCase() =='input' ) {   //input的onfocus和 onblur事件绑定
 			target.onfocus = function() {      //bug:第一次focus不能进入
@@ -115,7 +115,7 @@ function init() {
 				}
 			}
 		}
-	}	
+	} );
 }
 
 init();
