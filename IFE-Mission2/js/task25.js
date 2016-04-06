@@ -28,10 +28,11 @@ function trim(str){
 
 //过滤出文本节点
 function text_node(node) {
-	for (var i = 0; i < node.childNodes.length; i++) {
+	for (var i = 0 , len = i < node.childNodes.length ; i < len; i++) {
 		if(node.childNodes[i].nodeType == 3 && trim(node.childNodes[i].nodeValue)!="" ){  //文本节点，且其内容不为空
 			console.log(node.childNodes[i].nodeValue);
-			return trim(node.childNodes[i].nodeValue);}
+			return trim(node.childNodes[i].nodeValue);
+		}
 	}
 	return -1;
 }
@@ -77,31 +78,31 @@ function reset(node_list) {
 }
 
 /*绑定事件-惰性载入*/
-function addEvent(type,element,func ) {
+function add_event(type,element,func ) {
 	if( element.addEventListener ){
-		addEvent = function(type,element,func){
+		add_event = function(type,element,func){
 			element.addEventListener(type,func,false);
 		}
 	}
 
 	else if(element.attachEvent){
-		addEvent = function (type,element,func){
+		add_event = function (type,element,func){
 			element.attachEvent('on'+type,func) ;
 		}
 	}
 
 	else {
-		addEvent = function(type,element,func) {
+		add_event = function(type,element,func) {
 			element['on'+type] = func;
 		}
 	}
 	
-	return addEvent(type,element,func);
+	return add_event(type,element,func);
 }
 
 function btn_clicked(btn_index) {
 	
-	var root_node = document.getElementsByClassName('root')[0];
+	var root_node = document.querySelector('.root');
 	var node_list = [];
 	var search_input = document.getElementById('search');
 	var text = trim(search_input.value);
@@ -162,7 +163,7 @@ function btn_handle_init() {
 	var btn = document.getElementsByTagName('button');
 	for (var i = 0; i < btn.length; i++) {
 		(function(i){
-			addEvent('click',btn[i],function(){
+			add_event('click',btn[i],function(){
 				btn_clicked(i)
 				}
 			);
@@ -178,13 +179,13 @@ function btn_handle_init() {
 */
 function div_clicked_init() {
 	var node_list = [] ;
-	var root_node = document.getElementsByClassName('root')[0];	
-	var bg_img =new Array();
+	var root_node = document.querySelector('.root');	
+	var bg_img = [];
 	bg_img[0] =  'url("./img/24right.png") 0 3px rgb(139, 202, 255) no-repeat';
 	bg_img[1] =  'url("./img/24down.png") 0 3px rgb(139, 202, 255) no-repeat';
 
 	depth_order(root_node,node_list);
-	addEvent('click',root_node,function(ev){
+	add_event('click',root_node,function(ev){
 		var ev = ev || window.event ;
 		var target = ev.target ||ev.srcElement;
 		if (target.nodeName.toLowerCase() == 'div' ) {
