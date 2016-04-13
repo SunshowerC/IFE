@@ -2,104 +2,88 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>test</title>
-  <style type="text/css">
-
-
-    div  {
-      box-sizing: border-box;
-      display: inline-block;
-      background-color: #fff;
-      border: 1px solid #888; 
-      margin: 10px;
-      float:left;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .depth_4 {
-      
-      width: 60px;
-      height: 80px;
-    }
-  
-    .root {
-      display: block;
-      width: 90%;
-      margin: 50px auto;
-      float:none;
-    } 
-
-    button {
-      background-color: #8BCAFF;
-      padding: 3px 5px;
-      color: #fff;
-      border: 0;
-      border-radius: 5px;
-      margin: 10px;
-      opacity: 0.7;
-      line-height: 26px;
-      font-size: 22px;
-      box-shadow: 0 0 6px #8BCAFF;
-    }   
-    button:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-  </style>
-  <script type="text/javascript" src="js/test.js"></script>
-
+  <title>Document</title>
 </head>
 <body>
-  <center>
-    <button>深度优先遍历</button><button>广度优先遍历</button><br />
-    <button>深度优先检索</button><input type="text" name='search' id='search' placeholder="请输入检索内容" /><button>广度优先检索</button><br />
-    <button>删除</button><input type="text" name="add" id="add" placeholder="请输入添加的元素内容" /><button>添加</button>
-      
-  </center>
-  <div class="root">
-    <div class="depth_2">智能
-      <div class="depth_3">
-        <div class="depth_4">颓废</div>
-        <div class="depth_4">智慧</div>
-        <div class="depth_4">潇洒</div>
-        <div class="depth_4">笑啥</div>智障
-      </div>
-      <div class="depth_3">
-        <div class="depth_4">小傻</div>
-      胡渣
-      </div>
-      <div class="depth_3">波函数
-        <div class="depth_4">屎</div>
-        <div class="depth_4">傅里叶变换</div>
-      </div>      
-    </div>
-    宿命
-    <div class="depth_2">硬盘
-      <div class="depth_3">天才
-        <div class="depth_4">美男子</div>
-        <div class="depth_4">陨石</div>
-        <div class="depth_4">娇花</div>
-      </div>
-      <div class="depth_3">肉质
-        <div class="depth_4">懵逼</div>
-      </div>
-      <div class="depth_3">
-        幼稚
-      </div>
-      <div class="depth_3">拿衣服
-        <div class="depth_4">开挂</div>
-      </div>            
-    </div>
-    <div class="depth_2">大黄
-      <div class="depth_3">酱油
-        <div class="depth_4">尿遁</div>
-        <div class="depth_4">蛋疼</div>
-      </div>
-    </div>    
-  </div>
-
   
+  <div id="box"></div>
+<script type="text/javascript">
+
+
+
+/*
+function People(name)
+{
+  this.name=name;
+  //对象方法
+  this.Introduce=function(){
+    console.log("My name is "+this.name);
+  }
+}
+//类方法
+People.Run=function(){
+  console.log("I can run");
+}
+//原型方法
+People.prototype.IntroduceChinese=function(){
+  console.log("我的名字是"+this.name);
+}
+
+
+
+//测试
+
+var p1=new People("Windking");
+
+p1.Introduce();
+
+People.Run();
+
+p1.IntroduceChinese();
+*/
+
+
+
+/*
+    String.prototype.foo = function(begin,end) {
+      
+      var str = this.valueOf();
+      console.log(str[begin]);
+      var newstr='';
+      for(var i=begin; i<end ;i++){
+        newstr+=str[i];
+      }
+      console.log(newstr);
+    }
+*/
+/*
+  var foo = function(begin,end) {
+      
+      var str = this.valueOf();
+      console.log(str[begin]);
+      var newstr='';
+      for(var i=begin; i<end ;i++){
+        newstr+=str[i];
+      }
+      console.log(newstr);
+    }
+
+    var  string1='abcedef';
+    var a ={};
+    
+
+
+
+    console.log(string1.slice(1));
+    window.foo.call(string1,2,5);
+*/
+var str = new String("abcdef");
+for(var i in str){
+  console.log(i);
+}
+
+
+</script>  
 </body>
 
 </html>

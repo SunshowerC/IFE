@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十七</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.content {
+			padding: 100px 0 0 0 ;
+		}
+
+		.content > button {
+			display: block;
+			margin: 0 auto 2000px  ;
+			width: 100px;
+			height: 40px;
+			font-size: 22px;
+			color: #fff;
+			line-height: 40px;
+			background: #369;
+			border: 1px solid #369;
+			border-radius: 8px;
+			opacity: 0.7;
+			cursor: pointer;
+			transition: opacity 1s, width 0.3s;
+		}
+		button:hover {
+			opacity: 1;	
+			width: 110px;
+		}
+
+		.mask {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1000;
+			background: #111;
+			opacity: 0.3;
+		}
+
+		#pop {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform:translate(-50%,-50%);
+			width: 400px;
+			height: 200px;
+			background: #fdfdfd;
+			z-index: 1001;
+			box-shadow: 0 0 20px #000;
+			border-radius: 14px;
+		}
+
+		#pop > h2 {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 20%;
+			background: #369;
+			line-height: 100%;
+			color: #fff;
+			border-radius: 12px 12px 0 0;
+		}
+
+		#pop > p {
+			margin: 20px 20px 0;
+			text-indent: 2em;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="content">
+		<button>浮出层</button>
+	</div>
+
+	<script type="text/javascript" src="js/task37.js"></script>
+</body>
+</html>
