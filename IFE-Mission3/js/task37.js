@@ -1,21 +1,31 @@
 (function(){
-	var btn = document.querySelector('.content button');
-
-	function Pop(width,height,title,content) {
+/*
+* Pop , config:配置项； btn:绑定的句柄
+ */
+	function Pop(config,btn) {
 		this.obj = document.createElement('div');
-		this.disX = 0;
-		this.disY = 0;
 		this.obj.id = 'pop';
-		this.obj.style.width = width + 'px' ;
-		this.obj.style.height = height + 'px' ;
-		this.title = title;
-		this.content = content;
+		this.obj.style.width = config.width + 'px' ;
+		this.obj.style.color = config.color;
+		this.obj.style.background = config.background;
+		this.title = config.title;
+		this.content = config.content;
+		this.btn = btn;
 	}
 
 	Pop.prototype = {
+		disX: 0,
+		dixY: 0,
+
 		init: function(){
-			this.createDom();
-			this.bindEvent();
+			var That = this;
+			this.btn.onclick = function(ev){
+				var ev = ev || window.event;
+				ev.stopPropagation();						
+				That.createDom();
+				That.bindEvent();				
+			}			
+
 		},
 		createDom: function(){
 			//增加遮罩
@@ -69,13 +79,27 @@
 		}
 	}
 
-	btn.onclick = function(ev){
-		var ev = ev || window.event;
-		ev.stopPropagation();		
-		var d = new Pop(400,200,'标题','内容，好多的内容，内容，好多的内容。内容，好\
-			多的内容，内容，好多的内容。内容，好多的内容，内容，好多的内容。内容，好\
-			多的内容，内容，好多的内容。内容，好多的内容，内容，好多的内容。内容，好\
-			多的内容，内容，好多的内容。');
-		d.init();		
-	}
+/* 
+* config 接口对象
+* @parameter width: 弹出层宽度
+*                   高度自适应
+* @parameter color: 内容字体颜色                  
+* @parameter background 内容背景颜色
+* @parameter title: 弹出层的标题
+* @parameter content 弹出层内容
+* */
+	var btn = document.querySelector('.content button');
+	var config = {
+		width: 400,
+		color: '#666',
+		background: '#fff',
+		title: '这是标题' ,
+		content: '内容，好多的内容，内容，好多的内容。内容，好\
+		多的内容，内容，好多的内容。内容，好多的内容，内容，好\
+		多的内容。内容，好多的，内容，好多的，内容，好多的，内容，好多的，内内容，好多的，内容，好多的，内容，好多的，内容，好多的，内容，好多的，内容，好多的内容。'
+	};
+
+	var newPop = new Pop(config,btn);
+	newPop.init();
+
 }() )
