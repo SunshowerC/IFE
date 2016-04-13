@@ -24,7 +24,8 @@
 			document.body.appendChild(this.mask);
 
 			//增加弹出层
-			this.obj.innerHTML = '<h2>' + this.title + '</h2>' + '<p>' + this.content + '</p>';
+			this.obj.innerHTML = '<h2>' + this.title + '</h2>' + '<p>' + this.content + '</p>' +'<button class="cancel">取消' + '</button>\
+			' + '<button class="ensure">确定' + '</button>';
 			document.body.appendChild(this.obj);		
 		},
 		bindEvent: function() {
@@ -32,6 +33,7 @@
 			// 弹出层移动
 			This.obj.onmousedown = function(ev) {
 				var ev = ev || window.event;
+				var target = ev.target ||ev.srcElement;
 				This.disX = ev.clientX - This.obj.offsetLeft; //获取光标相对位置
 				This.disY = ev.clientY - This.obj.offsetTop;	
 				document.onmousemove = function(ev)	 {
@@ -40,10 +42,18 @@
 					This.obj.style.top = ev.clientY - This.disY + 'px';
 				}
 
-				document.onmouseup = function() {	
+				document.onmouseup = function(ev) {
+					var ev = ev || window.event ;
+					var target = ev.target ||ev.srcElement;
+					if (target.nodeName.toLowerCase() == 'button' && target.parentNode == This.obj) {
+						document.body.removeChild(This.obj);
+						document.body.removeChild(This.mask);
+						document.onclick =null;
+					}
 					document.onmousedown = null;
 					document.onmousemove = null;
-				}	
+				}
+				
 			}
 
 			//移除遮罩和弹出层
@@ -69,6 +79,3 @@
 		d.init();		
 	}
 }() )
-
-
-
