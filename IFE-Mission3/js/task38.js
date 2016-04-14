@@ -8,6 +8,7 @@
 		this.head = config.head;
 		this.data = getFullTable(config);
 		this.parent = obj;
+		this.parent.className += ' content' ;
 		this.sortWay = config.sortWay;  //升序，默认升序 
 	}
 
@@ -103,7 +104,7 @@
 	* @param head              值：array;
 	* @param data              值：二维数组,第0列为名称, 其他为数据;
 	 */
-	var obj = document.querySelector('.content');  
+	var obj = document.querySelector('.wrap');  
 	var config = {
 		sortWay: 'auto',  
 		caption: '这是表格标题',
