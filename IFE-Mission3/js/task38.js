@@ -20,7 +20,7 @@
 			this.bindEvent();
 
 		},
-
+		//创建表格头以及标题
 		createThead: function(){
 			this.parent.innerHTML = ' <table><caption>'+ this.caption +'</caption><thead><tr></tr></thead><tbody></tbody></table> ';
 			var thead = this.parent.querySelector('thead>tr');
@@ -28,7 +28,7 @@
 				thead.innerHTML += '<th>' + this.head[i] + '</th>';
 			}
 		},
-
+		//创建表格主体
 		createTbody: function() {		
 			tbody = this.parent.querySelector('table>tbody');
 			tbody.innerHTML = '';
@@ -64,7 +64,7 @@
 
 			this.createTbody();
 		},
-
+		//绑定th的排序事件
 		bindEvent: function() {
 			var This = this;
 			var head = this.parent.querySelector('table>thead');
@@ -81,7 +81,9 @@
 			}
 		}
 	}
-
+	/*
+	*算出总分，返回新数据
+	 */
 	function getFullTable(config){
 		var newdata = config.data;
 		var sum = 0;
