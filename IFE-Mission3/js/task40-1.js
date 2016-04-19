@@ -167,12 +167,18 @@ $(function(){
 		return num;
 	}
 
+/*
+* @param {string}  id:样式选择器，此为table的id
+* @param {element}  container: 装日历组件的容器
+* @param {array}   yearRange: 可选年份的范围，长度为2。
+* @param {string} dafaultDate: 初始默认选择的日期。不填则默认为当前日期。
+ */
 
 	var config = {
 		id : 'calen',    //样式选择id
 		container: $('.wrap'),   //容器
 		yearRange: [1900,2100],
-//		defaultDate: '2016-01-01'
+		defaultDate: '2016-01-01'
 	}
 	var newCalen = new Calender(config);
 	newCalen.init();
