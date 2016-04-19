@@ -3,7 +3,7 @@ $(function(){
 
 	function Calender(config){
 		this.container = config.container;
-		this.id = config.id
+		this.id = config.id;
 		this.now = config.defaultDate ? new Date(config.defaultDate) : new Date();
 		this.yearRange = config.yearRange;
 		this.nowYear = this.now.getFullYear();  //年份
@@ -114,9 +114,22 @@ $(function(){
 					$('#calenderInput').val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html() ) );						
 					This.now =new Date ($('#calenderInput').val() );
 					This.refreshDate();
+					$('#'+ This.id ).css('display','none');
 				}
 
 			});
+
+			$('#calenderInput' ).on('focus',function(){
+				$('#'+ This.id ).css('display','table');
+			})
+
+			$(document).on('click',function(){
+				$('#'+ This.id ).css('display','none');
+			})
+
+			$('#'+ This.id + ',#calenderInput' ).on('click',function(){
+				return false;
+			})
 
 			//加载时触发click事件
 			$('#'+ this.id + ' > tbody td:eq('+ (This.nowDate + nowFirstDay - 1) +') ').trigger('click');
@@ -178,7 +191,7 @@ $(function(){
 		id : 'calen',    //样式选择id
 		container: $('.wrap'),   //容器
 		yearRange: [1900,2100],
-		defaultDate: '2016-01-01'
+		defaultDate: '2016-02-01'
 	}
 	var newCalen = new Calender(config);
 	newCalen.init();

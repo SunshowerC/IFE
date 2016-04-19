@@ -19,7 +19,6 @@ $(function(){
 			this.createSelect();
 			this.createInput();
 			this.bindEvent();
-
 		},
 
 
