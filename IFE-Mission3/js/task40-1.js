@@ -7,8 +7,8 @@ $(function(){
 		this.now = new Date();
 		this.yearRange = config.yearRange;
 		this.nowYear = this.now.getFullYear();  //年份
-		this.nowMonth = this.now.getMonth() + 1 ;	//月份
-		this.nowDate =	this.now.getDate();   //这月的第几日
+		this.nowMonth = this.now.getMonth() + 1 ;	//月份	
+		this.nowDate = this.now.getDate();   //这月的第几日	
 	}
 
 
@@ -36,48 +36,44 @@ $(function(){
 
 		createTbody : function(){
 
-//			var nowDate = this.now.getDate();   //这月的第几日
 			var nowFirstDay = new Date(this.nowYear + "/" + this.nowMonth + "/" + 1).getDay();//这月一号是星期几//周几（0,1,2,3,4,5,6,）
 			var nowMonthDays = getNowMonthDays(this.nowYear,this.nowMonth); //这个月的天数
-			var lastMonthDays = getNowMonthDays(this.nowYear,this.nowMonth-1); //上月的天数
+			var lastMonthDays = getNowMonthDays(this.nowYear,this.nowMonth - 1); //上月的天数
 			var daysData = [];
-			console.log(this.nowYear+','+this.nowMonth+','+','+nowFirstDay+','+nowMonthDays+','+lastMonthDays);
+//			console.log(this.nowYear+','+this.nowMonth+','+','+nowFirstDay+','+nowMonthDays+','+lastMonthDays);
+			//添加上个月的数据
 			for( var i = lastMonthDays - nowFirstDay + 1, len = lastMonthDays; i <= len; i++) {
 				daysData.push(i);
 			}
 
+			//添加这个月的数据
 			for(var j = 1, len = nowMonthDays; j <= nowMonthDays ; j++ ){
 				daysData.push(j);
 			}
 
+			//添加下个月的数据
 			for(var k = 1;daysData.length < 42; k++){
 				daysData.push(k);	
 			}
 
-			daysData = changeArr(daysData);
-			
+			//渲染tbody
+			daysData = changeArr(daysData); //将数据转换成二维数组，便于使用
 			var $tbody = $('#'+ this.id + ' > tbody ');
 			$tbody.empty();
 			for( var i = 0, rowLen = daysData.length; i < rowLen ; i++){				
 				var $tr = $('<tr></tr>')
 				for(var j = 0, colLen = daysData[i].length; j < colLen ; j++ ){					
 					$tr.append('<td>'+ daysData[i][j] +'</td>');
-					if (i*7+j < nowFirstDay) {
-
-					}
 				}
 				$tbody.append($tr);
 			}
-			$('#'+ this.id + '>tbody td:lt('+nowFirstDay+')').addClass('lastMonth');
-			$('#'+ this.id + '>tbody td:gt('+ (nowFirstDay+nowMonthDays-1) +')').addClass('nextMonth');
-
+			$('#'+ this.id + '>tbody td:lt('+nowFirstDay+')').addClass('lastMonth'); //标识上个月的日子
+			$('#'+ this.id + '>tbody td:gt('+ (nowFirstDay+nowMonthDays-1) +')').addClass('nextMonth');//标识下个月的日子
 		},
 
 		//创建<select>年份月份选择
 		createSelect: function(){
-//			var $thead = $('#'+ this.id + ' > thead ');
-			var $curMonthOption = this.now.getMonth() ;
-			var $curYearOption = this.now.getFullYear() - this.yearRange[0];
+			var $curYearOption = this.nowYear - this.yearRange[0];
 			var $tr = $('<tr></tr>');
 			var $selectYear = $('<select id="year"></select>');
 			var $selectMonth = $('<select id="month"></select>');			
@@ -90,9 +86,7 @@ $(function(){
 						
 			$tr.append($('<th colspan="7"></th>').append($selectYear).append($selectMonth));
 			$('#'+ this.id + ' > thead ').prepend($tr);
-			$('#year > option:eq('+$curYearOption+'),#month > option:eq('+$curMonthOption+')').attr('selected',true);
-			$
-
+			$('#year > option:eq('+$curYearOption+'),#month > option:eq('+(this.nowMonth-1)+')').attr('selected',true);  //设置默认选择项
 		},
 
 		createInput: function() {
@@ -100,32 +94,39 @@ $(function(){
 			$('#'+ this.id ).before($input);
 		},
 
+		//绑定事件
 		bindEvent: function() {
 			var This = this;
+			var nowFirstDay = new Date(This.nowYear + "/" + This.nowMonth + "/" + 1).getDay();
 
+			//select改变，渲染表格
 			$('#year,#month').on('change',function(){
-				This.now = new Date($('#year').val() + '/' + $('#month').val() + '/' + 1);
-				This.createTbody();
+				This.now = new Date($('#year').val() + '/' + $('#month').val() + '/' + This.nowDate);
+				This.refreshDate();
+				This.createTbody();			
 			});
 
+			//点击事件
 			$('#'+ this.id + ' > tbody ').on('click','td',function(){
 				if (this.className == '') {
-				
-
-					console.log(This.now);
 					$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 					$(this).addClass('curDate');
-					$('#calenderInput').val(This.nowYear+'/'+This.nowMonth+'/'+ $(this).html());	
-//					$('#calenderInput').val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html()));	
-					
+					$('#calenderInput').val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html() ) );						
 					This.now =new Date ($('#calenderInput').val() );
-					console.log(This.now);
-					
+					This.refreshDate();
 				}
 
 			});
-		}
 
+			//加载时触发click事件
+			$('#'+ this.id + ' > tbody td:eq('+ (This.nowDate + nowFirstDay - 1) +') ').trigger('click');
+		},
+
+		refreshDate: function() {
+			this.nowYear = this.now.getFullYear();  //年份
+			this.nowMonth = this.now.getMonth() + 1 ;	//月份	
+			this.nowDate = this.now.getDate();   //这月的第几日			
+		}
 
 	}
 
@@ -167,7 +168,6 @@ $(function(){
 	}
 
 
-//	var $wrap = $('.wrap');
 	var config = {
 		id : 'calen',    //样式选择
 		container: $('.wrap'),   //容器
