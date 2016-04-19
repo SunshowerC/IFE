@@ -44,6 +44,8 @@ function removeEvent(type,element,func){
 			element['on'+type]=null;
 		}
 	}
+
+	return removeEvent(type,element,func);
 }
 
 function strlen(str) {

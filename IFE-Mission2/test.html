@@ -3,84 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style type="text/css">
+select {
+/*   width:200px;
+height: 30px;
+text-align: center; */
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #369;
+  font-size: 25px;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background:  url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+  background-color: #369;
+  color: #fff;
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+}
+
+option:hover {
+  background: #000;
+
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头
+select::-ms-expand { display: none; }*/
+
+  </style>
 </head>
 <body>
   
-  <div id="box"></div>
+  <div id="box">
+    <select>
+      <option value="1">水电费</option>
+      <option value="2">为广大</option>
+      <option value="3">去去去</option>
+      <option value="4">呃呃呃</option>
+      <option value="5">柔柔弱弱啊啊啊啊</option>
+    </select>
+
+  </div>
+
 <script type="text/javascript">
 
 
-
-/*
-function People(name)
-{
-  this.name=name;
-  //对象方法
-  this.Introduce=function(){
-    console.log("My name is "+this.name);
-  }
-}
-//类方法
-People.Run=function(){
-  console.log("I can run");
-}
-//原型方法
-People.prototype.IntroduceChinese=function(){
-  console.log("我的名字是"+this.name);
-}
-
-
-
-//测试
-
-var p1=new People("Windking");
-
-p1.Introduce();
-
-People.Run();
-
-p1.IntroduceChinese();
-*/
-
-
-
-/*
-    String.prototype.foo = function(begin,end) {
-      
-      var str = this.valueOf();
-      console.log(str[begin]);
-      var newstr='';
-      for(var i=begin; i<end ;i++){
-        newstr+=str[i];
-      }
-      console.log(newstr);
-    }
-*/
-/*
-  var foo = function(begin,end) {
-      
-      var str = this.valueOf();
-      console.log(str[begin]);
-      var newstr='';
-      for(var i=begin; i<end ;i++){
-        newstr+=str[i];
-      }
-      console.log(newstr);
-    }
-
-    var  string1='abcedef';
-    var a ={};
-    
-
-
-
-    console.log(string1.slice(1));
-    window.foo.call(string1,2,5);
-*/
-var str = new String("abcdef");
-for(var i in str){
-  console.log(i);
-}
 
 
 </script>  

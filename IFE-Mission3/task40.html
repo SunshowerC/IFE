@@ -1,1 +1,62 @@
-html:5
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四十</title>
+	<style type="text/css">
+		.wrap {
+			margin: 200px auto 0;
+			text-align: center;
+		}
+
+		#calen {			
+			border-collapse: collapse;
+			border: 1px solid #999;
+			font-size: 20px;
+			margin: 0 auto;			
+		}
+
+		#calen thead tr select:not(:last-child) {
+			margin: 0 20px 0 0;
+		}
+		
+		#calen td,#calen th {
+			width: 30px;
+			height: 30px;
+			padding: 3px;
+			border-radius: 5px;
+		}
+		
+		#calen > tbody td:not(.lastMonth):not(.nextMonth):hover {
+			color: #fff;
+			background: #369;
+			cursor: pointer;
+		}
+
+		#calen > tbody {
+			border-top: 1px solid #ddd;
+
+		}
+
+		#calen .lastMonth,#calen .nextMonth {
+			color: #aaa;
+		}
+
+		#calenderInput {
+			margin: 0 0 20px 0;
+		}
+		
+		#calen .curDate{
+			background: #369;
+			color: #fff;
+		}
+		
+
+	</style>
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+	<div class="wrap"></div>
+	<script type="text/javascript" src="js/task40.js"></script>
+</body>
+</html>

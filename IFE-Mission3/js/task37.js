@@ -67,15 +67,34 @@
 			}
 
 			//移除遮罩和弹出层
-			This.obj.onclick = function(ev) {
+/*			This.obj.onclick = function(ev) {
 				var ev = ev || window.event;
 				ev.stopPropagation();
 			}	
-			document.onclick = function() {
+			*/
+			var stopPropaga = function(ev){
+				var ev = ev || window.event;
+				ev.stopPropagation();				
+			}
+			addEvent('click',This.obj,stopPropaga);
+
+
+			var removeMask = function() {
+				document.body.removeChild(This.obj);
+				document.body.removeChild(This.mask);		
+				document.onclick = null;
+//				document.removeEventListener('click',removeMask,false);
+//				removeEvent('click',document,removeMask);
+			}
+
+			document.onclick = removeMask;
+//			addEvent('click',document,removeMask);
+
+/*			document.onclick = function() {
 				document.body.removeChild(This.obj);
 				document.body.removeChild(This.mask);
 				document.onclick =null;
-			}		
+			}*/
 		}
 	}
 
