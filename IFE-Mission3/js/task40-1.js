@@ -114,17 +114,17 @@ $(function(){
 					$('#calenderInput').val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html() ) );						
 					This.now =new Date ($('#calenderInput').val() );
 					This.refreshDate();
-					$('#'+ This.id ).css('display','none');
+					$('#'+ This.id ).css('display','none');				
 				}
 
 			});
 
 			$('#calenderInput' ).on('focus',function(){
-				$('#'+ This.id ).css('display','table');
+				$('#'+ This.id ).css('display','table');		
 			})
 
 			$(document).on('click',function(){
-				$('#'+ This.id ).css('display','none');
+				$('#'+ This.id ).css('display','none');		
 			})
 
 			$('#'+ This.id + ',#calenderInput' ).on('click',function(){
