@@ -4,7 +4,7 @@ $(function(){
 	function Calender(config){
 		this.container = config.container;
 		this.id = config.id
-		this.now = new Date();
+		this.now = config.defaultDate ? new Date(config.defaultDate) : new Date();
 		this.yearRange = config.yearRange;
 		this.nowYear = this.now.getFullYear();  //年份
 		this.nowMonth = this.now.getMonth() + 1 ;	//月份	
@@ -169,13 +169,12 @@ $(function(){
 
 
 	var config = {
-		id : 'calen',    //样式选择
+		id : 'calen',    //样式选择id
 		container: $('.wrap'),   //容器
-		yearRange: [1900,2100]
-
+		yearRange: [1900,2100],
+//		defaultDate: '2016-01-01'
 	}
 	var newCalen = new Calender(config);
-
 	newCalen.init();
 
 
