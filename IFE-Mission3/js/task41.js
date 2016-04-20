@@ -2,10 +2,11 @@
 $(function(){
 
 	function Calendar(config){
-		this.container = config.container;
-		this.id = config.id;
+		this.container = config.container || $('body'); //默认为body
+		this.id = config.id || 'calen';  //默认为calen
+		this.inputId = config.inputId || 'calendarInput';  //默认为calendarInput
 		this.now = config.defaultDate ? new Date(config.defaultDate) : new Date();
-		this.yearRange = config.yearRange;
+		this.yearRange = config.yearRange || [1970,2100]; //默认为1970 -- 2100 范围
 		this.nowYear = this.now.getFullYear();  //年份
 		this.nowMonth = this.now.getMonth() + 1 ;	//月份	
 		this.nowDate = this.now.getDate();   //这月的第几日	
@@ -15,6 +16,7 @@ $(function(){
 	Calendar.prototype =  {
 
 		init: function() {
+			console.log(([1,2] || [3,4]));
 			this.createThead();
 			this.createTbody();
 			this.createSelect();
@@ -90,7 +92,7 @@ $(function(){
 		},
 
 		createInput: function() {
-			var $input = $('<input type="text" id="calendarInput"  placeholder="点击输入日期" />');
+			var $input = $('<input type="text" id=' + this.inputId + '  placeholder="点击输入日期" />');
 			$('#'+ this.id ).before($input);
 		},
 
@@ -98,7 +100,7 @@ $(function(){
 		bindEvent: function() {
 			var This = this;
 			var nowFirstDay = new Date(This.nowYear + "/" + This.nowMonth + "/" + 1).getDay();
-
+			var $input = $('#' + This.inputId);
 			//select改变，渲染表格
 			$('#year,#month').on('change',function(){
 				This.now = new Date($('#year').val() + '/' + $('#month').val() + '/' + This.nowDate);
@@ -111,15 +113,15 @@ $(function(){
 				if (this.className == '') {
 					$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 					$(this).addClass('curDate');
-					$('#calendarInput').val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html() ) );						
-					This.now =new Date ($('#calendarInput').val() );
+					$input.val(This.nowYear+'-'+numFormat(This.nowMonth)+'-'+ numFormat($(this).html() ) );						
+					This.now =new Date ($input.val() );
 					This.refreshDate();
 					$('#'+ This.id ).css('display','none');				
 				}
 
 			});
 
-			$('#calendarInput' ).on('focus',function(){
+			$input.on('focus',function(){
 				$('#'+ This.id ).css('display','table');		
 			})
 
@@ -127,7 +129,7 @@ $(function(){
 				$('#'+ This.id ).css('display','none');		
 			})
 
-			$('#'+ This.id + ',#calendarInput' ).on('click',function(){
+			$('#'+ This.id + ',#' + This.inputId ).on('click',function(){
 				return false;
 			})
 
@@ -135,6 +137,7 @@ $(function(){
 			$('#'+ this.id + ' > tbody td:eq('+ (This.nowDate + nowFirstDay - 1) +') ').trigger('click');
 		},
 
+		//更新当前选择时间
 		refreshDate: function() {
 			this.nowYear = this.now.getFullYear();  //年份
 			this.nowMonth = this.now.getMonth() + 1 ;	//月份	
@@ -143,6 +146,7 @@ $(function(){
 
 	}
 
+	//获取当前选择月的天数
 	function getNowMonthDays(year,month) {
 		var days = 30;
 		switch(month){
@@ -165,6 +169,7 @@ $(function(){
 		return days;
 	}
 
+	//将一维数组转换成二维数组，仅用于日历
 	function changeArr(arr){
 		var newArr = [];
 		for(var i = 0,len = arr.length/7 ; i < len; i++){
@@ -173,6 +178,7 @@ $(function(){
 		return newArr;
 	}
 
+	//不足10的数字前面加0
 	function numFormat(num){
 		if (num < 10) {
 			return '0' + num;
@@ -182,6 +188,7 @@ $(function(){
 
 /*
 * @param {string}  id:样式选择器，此为table的id
+* @param {string}  inputId : 输入框id
 * @param {element}  container: 装日历组件的容器
 * @param {array}   yearRange: 可选年份的范围，长度为2。
 * @param {string} dafaultDate: 初始默认选择的日期。不填则默认为当前日期。
@@ -189,9 +196,10 @@ $(function(){
 
 	var config = {
 		id : 'calen',    //样式选择id
+		inputId : 'calendarInput', //输入框id
 		container: $('.wrap'),   //容器
 		yearRange: [1900,2100],
-		defaultDate: '2016-02-01'
+		defaultDate: '2016-04-01'
 	}
 	var newCalen = new Calendar(config);
 	newCalen.init();

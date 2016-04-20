@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四十一</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.wrap {
+			
+			margin: 200px  0 0 200px;
+			
+		}
+
+		#calen {			
+			border-collapse: collapse;
+			border: 1px solid #999;
+			font-size: 20px;
+			color: #333;
+			text-align: center;
+		}
+
+
+		#calen thead tr select:not(:last-child) {
+			margin: 0 20px 0 0;
+		}
+
+		#calen thead tr select {
+			width:80px;
+			height: 25px;
+			border: 0;
+			color: #555;
+			appearance:none;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			background: url(img/select-555-21.png) #fff no-repeat scroll right center ; 
+			padding:0 21px 0 10px; 
+		}
+		#calen thead tr select::-ms-expand { 
+			display: none; 
+		}
+
+		#calen thead tr:first-child {
+			background: #999;
+		}
+		
+		#calen td,#calen th {
+			width: 30px;
+			height: 30px;
+			padding: 3px;			
+		}
+		
+		#calen > tbody td:not(.lastMonth):not(.nextMonth):hover {
+			color: #fff;
+			background: #aaa;
+			cursor: pointer;
+		}
+
+		#calen > tbody {
+			border-top: 1px solid #ddd;
+		}
+
+		#calen .lastMonth,#calen .nextMonth {
+			color: #ccc;
+		}
+
+		#calendarInput {			
+			height: 30px;
+			text-indent: 10px;
+			border: 1px solid #333;
+			background: url(img/calendar-333-28.png) #fff no-repeat scroll right center ; 
+			padding: 0 30px 0 0;
+		}
+		
+		#calen .curDate{
+			background: #aaa;
+			color: #fff;
+		}
+
+
+		
+
+	</style>
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+	<div class="wrap"></div>
+	<script type="text/javascript" src="js/task41.js"></script>
+</body>
+</html>
