@@ -134,13 +134,14 @@ $(function(){
 			//点击事件
 			$('#'+ this.id + ' > tbody ').on('click','td',function(){
 				if (this.className == '') {
-
+					//时间段选择的 日历面板点击事件处理
 					if (This.isSelectRange) {
 						nowFirstDay = new Date(This.nowYear + "/" + This.nowMonth + "/" + 1).getDay();
 						This.selected.year[selectFlag % 2] = This.nowYear;
 						This.selected.month[selectFlag % 2] = This.nowMonth;
 						This.selected.date[selectFlag % 2] = parseInt($(this).html());
 						selectFlag++;
+						//为点击日期增加样式
 						$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 						for( var i = 0; i < 2; i++ ){
 	//						console.log(This.selected.year[i]+','+This.nowYear+','+This.selected.month[i]+','+This.nowMonth+',')
@@ -148,7 +149,7 @@ $(function(){
 								$('#'+ This.id + '>tbody td:eq('+ (nowFirstDay + This.selected.date[i] - 1) +')').addClass('curDate');
 							}				
 						}						
-
+						//更新输入框信息
 						$input.val(function(){
 							if ( (This.selected.year[1] - This.selected.year[0])*365 + (This.selected.month[1] - This.selected.month[0])*30 + (This.selected.date[1] - This.selected.date[0]) > 0 ){
 								return This.selected.year[0]+'-'+numFormat(This.selected.month[0])+'-'+ numFormat(This.selected.date[0])+' To '+This.selected.year[1]+'-'+numFormat(This.selected.month[1])+'-'+ numFormat(This.selected.date[1])
@@ -160,7 +161,7 @@ $(function(){
 					}
 
 
-
+					//时间点选择时的面板点击事件处理
 					else {
 						$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 						$(this).addClass('curDate');
@@ -173,6 +174,7 @@ $(function(){
 
 			});
 
+			//时间段选择时 button点击事件
 			$('#'+ This.id + ' > tfoot td').on('click','button', function(){
 				var days = Math.abs((This.selected.year[1] - This.selected.year[0])*365 + (This.selected.month[1] - This.selected.month[0])*30 + (This.selected.date[1] - This.selected.date[0]) );
 				console.log($(this).next('button').get(0));
@@ -281,6 +283,9 @@ $(function(){
 * @param {element}  container: 装日历组件的容器
 * @param {array}   yearRange: 可选年份的范围，长度为2。
 * @param {string} dafaultDate: 初始默认选择的日期。不填则默认为当前日期。
+* @param {boolean} isSelectRange: true 为选择时间段；false为选择一个时间点。
+* @param {array} selectedRange : 时间段选择长度,分别为最小值和最大值[min,max]
+* @param {function} outOfRange : 所选时间段不在指定范围时的回调函数。
  */
 
 	var config = {
@@ -290,7 +295,7 @@ $(function(){
 		yearRange: [1900,2100],
 		defaultDate: '2016-04-01',
 		isSelectRange: true,   
-		selectedRange: [1,30],  //[min,max]
+		selectedRange: [1,600],  //[min,max]
 		outOfRange:function() {
 			alert('时间可选范围为'+ this.selectedRange +'\n时间段选择超出范围');
 		}
