@@ -143,7 +143,7 @@ $(function(){
 						selectFlag++;
 						$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 						for( var i = 0; i < 2; i++ ){
-							console.log(This.selected.year[i]+','+This.nowYear+','+This.selected.month[i]+','+This.nowMonth+',')
+	//						console.log(This.selected.year[i]+','+This.nowYear+','+This.selected.month[i]+','+This.nowMonth+',')
 							if (This.isSelectRange && This.selected.year[i] == This.nowYear && This.selected.month[i] == This.nowMonth) {
 								$('#'+ This.id + '>tbody td:eq('+ (nowFirstDay + This.selected.date[i] - 1) +')').addClass('curDate');
 							}				
@@ -177,14 +177,26 @@ $(function(){
 				var days = Math.abs((This.selected.year[1] - This.selected.year[0])*365 + (This.selected.month[1] - This.selected.month[0])*30 + (This.selected.date[1] - This.selected.date[0]) );
 				console.log($(this).next('button').get(0));
 				console.log($(this).next('button').get(0) && (days < This.selectedRange[0] || days > This.selectedRange[1]))
-				if ( $(this).next('button').get(0) && (days < This.selectedRange[0] || days > This.selectedRange[1])) {
+				
+				//点击确定，输入为空时
+				if( $input.val() == '' && $(this).next('button').get(0)) {
+					alert('输入不能为空！');
+					return false;
+				}				
+
+				//点击确定按键，输入超出范围，清空输入框，运行设定的回调函数
+				else if ( $(this).next('button').get(0) && (days < This.selectedRange[0] || days > This.selectedRange[1])) {
 					$input.val('');
 					This.outOfRange();
 				}
+				//点击取消按键，清空输入框，隐藏日历面板
 				else if( !$(this).next('button').get(0) ){
 					$input.val('');
+					$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 					$('#'+ This.id ).css('display','none');						
 				}
+
+				//点击确定按键，且正确输入，隐藏日历面板
 				else 
 					$('#'+ This.id ).css('display','none');	
 
