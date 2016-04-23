@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四十三</title>
+	<link rel="stylesheet" type="text/css" href="css/task43.css">
+</head>
+<body>
+	<section class="wrap">
+								
+	</section>
+	<script type="text/javascript" src="js/task43.js"></script>
+	<script type="text/javascript">
+	var config = {
+		container: document.querySelector('.wrap'),
+		galleryContainerSize: [1200,900],
+		gallery:[
+			["img/nature.jpg",'自然'],
+			["img/planet1.jpg",'星球1'],
+			["img/planet2.jpg",'星球2'],
+			["img/planet3.jpg",'星球3'],
+			["img/DREAM WORLD9.jpg",'唯美世界'],
+			["img/planet4.jpg",'星球4']
+		]
+	}
+
+	for (var i = 0,len = config.gallery.length; i < len; i++) {
+		var newGallery = new Gallery(config);
+		config.gallery.shift();			
+	}
+
+	</script>
+</body>
+</html>
