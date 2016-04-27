@@ -142,7 +142,7 @@
 						//为点击日期增加样式
 						$('#'+ This.id + ' > tbody  td ').removeClass('curDate');
 						for( var i = 0; i < 2; i++ ){
-							console.log(This.selected.year[i]+','+This.nowYear+','+This.selected.month[i]+','+This.nowMonth+',')
+			//				console.log(This.selected.year[i]+','+This.nowYear+','+This.selected.month[i]+','+This.nowMonth+',')
 							if (This.isSelectRange && This.selected.year[i] == This.nowYear && This.selected.month[i] == This.nowMonth) {
 								$('#'+ This.id + '>tbody td:eq('+ (nowFirstDay + This.selected.date[i] - 1) +')').addClass('curDate');
 							}				
@@ -279,7 +279,6 @@
 		calendar:function(config) {
 			config.inputId = $(this).attr('id');
 			config.container = $(this).parent();
-			console.log( config );
 			var newCalen = new Calendar(config);
 			newCalen.init();			
 		}
