@@ -280,7 +280,8 @@
 			config.inputId = $(this).attr('id');
 			config.container = $(this).parent();
 			var newCalen = new Calendar(config);
-			newCalen.init();			
+			newCalen.init();	
+			return $(this) ; //链式操作
 		}
 	})
 } )(jQuery)
