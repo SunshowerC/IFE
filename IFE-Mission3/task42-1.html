@@ -123,31 +123,35 @@
  	
 	<script type="text/javascript" src="js/task42-1.js"></script>
 	<script type="text/javascript">
-/*
-* @param {string}   id:             样式选择器，此为table的id
-* @param {array}    yearRange:      可选年份的范围，长度为2。
-* @param {string}   dafaultDate:    初始默认选择的日期。不填则默认为当前日期。
-* @param {boolean}  isSelectRange:  true 为选择时间段；false为选择一个时间点。
-* @param {array}    selectedRange : 时间段选择长度,分别为最小值和最大值[min,max]
-* @param {function} outOfRange :    所选时间段不在指定范围时的回调函数。
- */
-		
-		$('#calendarRange').calendar({
-			id : 'calenR',    //日历样式选择id
-			yearRange: [1970,2088],
-//			defaultDate: '2016-04-26',   //不填默认为今天
-			isSelectRange: true,      //选择时间段
-			selectedRange: [1,600],  //[min,max]
-			outOfRange:function() {
-				alert('时间可选范围为'+ this.selectedRange +'\n时间段选择超出范围');
-			}			
-		})
+		$(function(){
+	/*
+	* @param {string}   id:             样式选择器，此为table的id
+	* @param {array}    yearRange:      可选年份的范围，长度为2。
+	* @param {string}   dafaultDate:    初始默认选择的日期。不填则默认为当前日期。
+	* @param {boolean}  isSelectRange:  true 为选择时间段；false为选择一个时间点。
+	* @param {array}    selectedRange : 时间段选择长度,分别为最小值和最大值[min,max]
+	* @param {function} outOfRange :    所选时间段不在指定范围时的回调函数。
+	 */
+			
+			$('#calendarRange').calendar({
+				id : 'calenR',    //日历样式选择id
+				yearRange: [1970,2088],
+	//			defaultDate: '2016-04-26',   //不填默认为今天
+				isSelectRange: true,      //选择时间段
+				selectedRange: [1,600],  //[min,max]
+				outOfRange:function() {
+					alert('时间可选范围为'+ this.selectedRange +'\n时间段选择超出范围');
+				}			
+			})
 
-		$('#calendarPoint').calendar({
-			id : 'calenP',    //日历样式选择id
-			yearRange: [1900,2100],
-			defaultDate: '2016-04-01',
-			isSelectRange: false  	//选择时间点	
+			$('#calendarPoint').calendar({
+				id : 'calenP',    //日历样式选择id
+				yearRange: [1900,2100],
+				defaultDate: '2016-04-01',
+				isSelectRange: false  	//选择时间点	
+			})
+
+			
 		})
 
 	</script>
