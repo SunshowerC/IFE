@@ -75,6 +75,7 @@ $btnBg : #f07600 ;
 
 }
 
+
 body {
 	background: $bodyBgColor ;
 }
@@ -90,6 +91,17 @@ header {
 	}
 	h1 {
 		font-size: $defaultSize + 10px;
+		&:before {
+			content: '?';
+			text-align: center;
+			display: inline-block;
+			width: 26px;
+			line-height: 1;
+			background: #fff;
+			color: $themeColor;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
 	}
 	h2 {
 		font-size: $defaultSize + 3px;
@@ -161,6 +173,10 @@ header {
 				padding-right: 25px;
 			}						
 
+		}
+
+		.active {
+			color: #55e344;
 		}
 	}
 
