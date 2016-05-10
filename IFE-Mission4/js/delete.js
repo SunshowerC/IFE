@@ -89,7 +89,7 @@
 			var defaultOptions = {
 				popup: $(this),
 				width: '20%' ,
-				height: 'auto' ,
+				height: '200' ,
 				title: '',
 				body: '',
 				button: {
@@ -118,11 +118,16 @@
 		})
 
 		$questBox.on('click',function(){
-			console.log($(".questionnaireTab tbody input:checked").length)
+			// console.log($(".questionnaireTab tbody input:checked").length)
 			$("#checkedAll").prop("checked",
 				$questBox.length == $(".questionnaireTab tbody input:checked").length ? 'checked' : '');
 		})		
 	}
+
+
+
+
+
 
 	/*
 	* 加载时渲染表格
@@ -222,35 +227,34 @@
 		})			
 	}
 
-	/*
-	模拟数据
-	 */
-	var questionnaire1 = {
-	        researchID :  'q1',
-	        researchTitle : '问卷',
-	        deadline : '2016-3-24',
-	        state : '已结束', // 1.正在进行  2.未发布  3.已经结束  		
-	},
-		questionnaire2 = {
-	        researchID :  'q2',
-	        researchTitle : '于XXX的调查问卷',
-	        deadline : '2016-3-20',
-	        state : '发布中', // 1.正在进行  2.未发布  3.已经结束        
-	    },
-	    questionnaire3 = {
-	        researchID :  'q3',
-	        researchTitle : '关XX的调查问卷',
-	        deadline : '2016-3-27',
-	        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
-	    };
-	var researchs = [];
-	researchs[0] = questionnaire1;
-	researchs[1] = questionnaire2;
-	researchs[2] = questionnaire3;
-
-
 	
-	loadedRender($('.questionnaireList'),researchs); //表格渲染
+		/*
+		模拟数据
+		 */
+		var questionnaire1 = {
+		        researchID :  'q1',
+		        researchTitle : '问卷',
+		        deadline : '2016-3-24',
+		        state : '已结束', // 1.正在进行  2.未发布  3.已经结束  		
+		},
+			questionnaire2 = {
+		        researchID :  'q2',
+		        researchTitle : '于XXX的调查问卷',
+		        deadline : '2016-3-20',
+		        state : '发布中', // 1.正在进行  2.未发布  3.已经结束        
+		    },
+		    questionnaire3 = {
+		        researchID :  'q3',
+		        researchTitle : '关XX的调查问卷',
+		        deadline : '2016-3-27',
+		        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
+		    };
+		var researchs = [];
+		researchs[0] = questionnaire1;
+		researchs[1] = questionnaire2;
+		researchs[2] = questionnaire3;
+		
+		loadedRender($('.questionnaireList'),researchs); //表格渲染		
 
 })
 
