@@ -3,6 +3,28 @@
  */
 
 
+var researchs = [
+    questionnaire1:{
+        researchID :  1,
+        researchTitle : '问卷',
+        deadline : '2016-3-24',
+        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
+    },
+    questionnaire2:{
+        researchID :  2,
+        researchTitle : '于XXX的调查问卷',
+        deadline : '2016-3-20',
+        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
+    },
+    questionnaire3:{
+        researchID :  3,
+        researchTitle : '关XX的调查问卷',
+        deadline : '2016-3-27',
+        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
+    }        
+]
+
+
 var localStorage = [
     //调查问卷 research
     {
