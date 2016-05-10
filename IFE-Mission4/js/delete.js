@@ -36,7 +36,6 @@
 			
 			for( btnName in This.button) {
 				var $btn = $('<button></button') ;
-				
 				$btn.html(btnName) ;
 
 				(function(btnName){
@@ -63,9 +62,13 @@
 
 		bindEvent: function() {
 			var This = this;
+			var panel = this.popup.children('.popupPanel');
 			/*拖拽事件*/
 			if (this.drag) {
-
+				panel.dragging({
+					hander: '.pop-up-title',  //绑定的可拖拽的块
+					move: 'both'  //x ,y ,both
+				});
 			}
 
 			$(document).on('click',function(){
@@ -104,6 +107,7 @@
 		}
 	})
 
+
 	var checkboxEvent = function(){
 		var $questBox = $('.questionnaireTab tbody input');
 		$('#checkedAll').on('click',function(){
@@ -120,11 +124,14 @@
 		})		
 	}
 
+	/*
+	* 加载时渲染表格
+	 */
 	var loadedRender = function($container, researchs) {
 		var newQuestHref = '#',
 		    editQuestHref = '#',
 		    checkQuestHref = '#',
-		    checkDataHref = '#'
+		    checkDataHref = '#';
 
 		$container.append(
 			'<table class="questionnaireTab">' +
@@ -158,8 +165,10 @@
 					'<td><input type="checkbox" id=' +researchs[i].researchID + ' /></td>' +
 					'<td><label for=' + researchs[i].researchID + '>' + researchs[i].researchTitle +'</label></td>' +
 					'<td>'+ researchs[i].deadline +'</td>' +
-					'<td>' + researchs[i].state +'</td>' +
-					'<td colspan="2">' +
+					function(){
+						return researchs[i].state == '发布中' ? '<td class="active">'+ researchs[i].state +'</td>' : '<td>'+ researchs[i].state +'</td>';
+					}()
+					+ '<td colspan="2">' +
 						'<a href=' + editQuestHref + '>编辑</a> ' +
 						'<a href="##" class="deleteQuest" >删除</a> ' +
 						'<a href="#">' + '查看问卷' + '</a>' +
@@ -182,24 +191,27 @@
 				height: 200,
 				button: {
 					'确定': function(){
-						if (e.target.className == 'deleteQuest') {
+						if (e.target.className == 'deleteQuest') {  // tbody 的删除按钮
 							$(This).parents('tr').remove();
-							console.log($(This).parents('tr').find('input').attr('id'));
 							var thisQuestId = $(This).parents('tr').find('input').attr('id');
 							researchs.forEach(function(item,index,array){
 								if (thisQuestId == item.researchID ) {
-									console.log(item)
-									delete researchs[index];
+									// delete researchs[index];
+									researchs.splice(index,1);
+									// console.log(researchs)
 								}
-							})
-							// delete researchs[This.index];
-							console.log(researchs);
+							});
 
-							/*
-							
-							 */
-						} else {
-							$(".questionnaireTab tbody input:checked").parents('tr').remove();
+						} else {   //tfoot 的删除按钮
+							var $checkedInput = $(".questionnaireTab tbody input:checked");
+							$checkedInput.parents('tr').remove();
+							$checkedInput.each(function(index,element){
+								researchs.forEach(function(item,index,array){
+									if (element.id == item.researchID) {
+										researchs.splice(index,1);
+									}
+								})
+							})
 						}
 					},
 					'取消': function(){
@@ -236,7 +248,6 @@
 	researchs[1] = questionnaire2;
 	researchs[2] = questionnaire3;
 
-							console.log(researchs);
 
 	
 	loadedRender($('.questionnaireList'),researchs); //表格渲染
