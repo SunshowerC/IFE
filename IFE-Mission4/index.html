@@ -2,11 +2,13 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>微型调查问卷平台</title>
-	<link rel="stylesheet" type="text/css" href="css/indexExpanded.css">
+	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="js/jq-drag.js"></script>
-
+	<script type="text/javascript" src="js/pop.js"></script>
+	
 </head>
 <body>
 	<header>
@@ -18,7 +20,35 @@
 	<div id="dialog-modal"></div>
 	<script type="text/javascript" src="js/delete.js"></script>
 	<script>
+	/*
+	模拟数据
+	 */
 
+	researchs = [
+		{
+	        researchID :  'q1',
+	        researchTitle : '问卷',
+	        deadline : '2016-3-24',
+		    state : '已结束', // 1.正在进行  2.未发布  3.已经结束  		
+		},
+
+		{
+		    researchID :  'q2',
+		    researchTitle : '于XXX的调查问卷',
+		    deadline : '2016-3-20',
+		    state : '发布中', // 1.正在进行  2.未发布  3.已经结束        
+		},
+
+		{
+	        researchID :  'q3',
+	        researchTitle : '关XX的调查问卷',
+	        deadline : '2016-3-27',
+	        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
+	    }    
+
+	];
+
+	loadedRender($('.questionnaireList'),researchs); //表格渲染		
 
 	</script>
 </body>
