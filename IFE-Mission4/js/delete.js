@@ -78,6 +78,7 @@ var loadedRender = function($container, researchs) {
 	$('.questionnaireTab ').on('click','a[class*="deleteQuest"]',function(e){
 		var This = this;  //This 为 <a>
 		var thisTr = $(This).parents('tr'); 
+
 		$('#dialog-modal').dialog({
 			title: '系统提示',
 			content: '确定要删除此问卷？',
@@ -111,9 +112,12 @@ var loadedRender = function($container, researchs) {
 				}
 			}		
 		})
+	
 		e.stopPropagation();		
 	})			
 }
+
+
 
 	
 

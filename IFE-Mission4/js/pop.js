@@ -18,6 +18,7 @@
 		createMask: function() {
 			if (this.modal) {
 				$('body').append('<div class="pop-up-mask"></div>')
+				$('.pop-up-mask').fadeTo(400,0.7);
 			}
 		},
 
@@ -47,11 +48,17 @@
 
 				btnGroup.append($btn);
 			}
+			$('.popupPanel').slideDown(400);
 		},
 
 		close: function() {
-			this.popup.empty();
-			$('.pop-up-mask').remove();
+			var This = this;
+			$('.popupPanel').slideUp(400,function(){
+				This.popup.empty();
+			});
+			$('.pop-up-mask').fadeOut(400,function(){
+				$('.pop-up-mask').remove();				
+			});
 			this.unbindEvent();
 		},
 
