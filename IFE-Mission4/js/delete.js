@@ -21,7 +21,7 @@ var checkboxEvent = function(){
 * 加载时渲染表格
  */
 var loadedRender = function($container, obj) {
-	var researchs = obj.paperMsg;
+	var researchs = obj.paperMsg || [];
 	var newQuestHref = '#',
 	    editQuestHref = '#',
 	    checkQuestHref = '#',
