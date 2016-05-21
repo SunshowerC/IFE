@@ -1,68 +1,163 @@
 /**
- * Created by MaxWell on 2016/5/8.
+ * Created by MaxWell on 2016/5/21.
  */
 
 
-var researchs = [
-    questionnaire1:{
-        researchID :  1,
-        researchTitle : '问卷',
-        deadline : '2016-3-24',
-        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
-    },
-    questionnaire2:{
-        researchID :  2,
-        researchTitle : '于XXX的调查问卷',
-        deadline : '2016-3-20',
-        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
-    },
-    questionnaire3:{
-        researchID :  3,
-        researchTitle : '关XX的调查问卷',
-        deadline : '2016-3-27',
-        state : '未发布', // 1.正在进行  2.未发布  3.已经结束        
-    }        
-]
+var data = {
+    // activeResearchID : 1 ,
+    paperMsg :
+    [
+        {
+            researchID: 1,
+            researchTitle: '关于考研的调查问卷',
+            deadline: '2016-05-21',
+            state: 2,  // 1：未发布 2：发布中 3：已结束
+            description: '考研的确是一件关系到大学生前程的事情，但是同学们也没必要考虑得太早了，从大三开始考虑完全来得及，考虑太早，最后变化也快，这个时代节奏太快，计划赶不上变化，等到大三了，学业各方面都差不多稳定了，这时候再考虑，对自己未来的定位会更准确。究竟该不该考研?该考哪个学校?一些人甚至从大一大二就开始考虑这个问题，确实对于这个大的问题，是否做，如何做，多花些时间来考虑是必要的。但在开始考虑这个问题时，你首先要知道的是考研的整个流程，它要经过哪些阶段，在什么时间要做什么事情，这些都要心中有数，以便及早安排，计划周详。考研大致要经过以下过程。',
+            questionTeam: [
+                {
+                    isMust: true,
+                    questType: 1,  //1 单选 2 多选 3 填空
+                    questTitle: '您的职业',
+                    questOption: [
+                        '18岁以下',
+                        '18-25',
+                        '25-35',
+                        '35-50',
+                        '50岁以上'
+                    ],
+                    answerNum: [
+                        3,
+                        4,
+                        5,
+                        1
+                    ]
+                },
+                {
+                    isMust: false,
+                    questTitle: '您的爱好',
+                    questType: 2,
+                    questOption: [
+                        '音乐',
+                        '阅读',
+                        '旅游',
+                        '电影'
+                    ],
+                    answerNum: [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                {
+                    questType: 3,
+                    isMust: true,
+                    questTitle: '您的职业是?',
+                    answerValidNum: 12
+                }
+            ]
+        },
+        //下一个问卷
+        {
+            researchID: 2,
+            researchTitle: '关于本天才的调查问卷',
+            deadline: '2016-06-16',
+            state: 1,  // 1：未发布 2：发布中 3：已结束
+            description: '考研的确是一件关系到大学生前程的事情，但是同学们也没必要考虑得太早了，从大三开始考虑完全来得及，考虑太早，最后变化也快，这个时代节奏太快，计划赶不上变化，等到大三了，学业各方面都差不多稳定了，这时候再考虑，对自己未来的定位会更准确。究竟该不该考研?该考哪个学校?一些人甚至从大一大二就开始考虑这个问题，确实对于这个大的问题，是否做，如何做，多花些时间来考虑是必要的。但在开始考虑这个问题时，你首先要知道的是考研的整个流程，它要经过哪些阶段，在什么时间要做什么事情，这些都要心中有数，以便及早安排，计划周详。考研大致要经过以下过程。',
+            questionTeam: [
+                {
+                    isMust: true,
+                    questType: 1,  //1 单选 2 多选 3 填空
+                    questTitle: '您的职业',
+                    questOption: [
+                        '18岁以下',
+                        '18-25',
+                        '25-35',
+                        '35-50',
+                        '50岁以上'
+                    ],
+                    answerNum: [
+                        3,
+                        4,
+                        5,
+                        1
+                    ]
+                },
+                {
+                    isMust: false,
+                    questTitle: '您的爱好',
+                    questType: 2,
+                    questOption: [
+                        '音乐',
+                        '阅读',
+                        '旅游',
+                        '电影'
+                    ],
+                    answerNum: [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                {
+                    questType: 3,
+                    isMust: true,
+                    questTitle: '您的职业是?',
+                    answerValidNum: 12
+                }
+            ]
+        },
 
-
-var localStorage = [
-    //调查问卷 research
-    {
-        researchID :  1,
-        researchTitle : '关于XXX的调查问卷',
-        deadline : '2016-3-24',
-        state : '', // 1.正在进行  2.未发布  3.已经结束
-        questionTeam : [
-            //题目元素
-            {
-                //题目需要有一个便于渲染的类似顺序的属性，但是由于题目需要可以复用，解决方案:
-                //1.用数组的下标表示渲染顺序，复用的题目可以只需要插入被复制的题目后面即可
-                isMust : true,  //必填，布尔类型
-                questType :         , //单选 多选 填空
-                questOption :  [
-                    '18岁以下',
-                    '18-25',
-                    '25-35',
-                    '35-50',
-                    '50岁以上'
-                ],
-                answerNum :[
-                    3,
-                    4,
-                    5,
-                    1,
-                    2
-                ],
-
-            },
-            {
-
-            }
-        ],
-
-    },
-
-
-
-];
-
+        {
+            researchID: 3,
+            researchTitle: '关于尔等傻逼的调查问卷',
+            deadline: '2016-03-11',
+            state: 3,  // 1：未发布 2：发布中 3：已结束
+            description: '考研的确是一件关系到大学生前程的事情，但是同学们也没必要考虑得太早了，从大三开始考虑完全来得及，考虑太早，最后变化也快，这个时代节奏太快，计划赶不上变化，等到大三了，学业各方面都差不多稳定了，这时候再考虑，对自己未来的定位会更准确。究竟该不该考研?该考哪个学校?一些人甚至从大一大二就开始考虑这个问题，确实对于这个大的问题，是否做，如何做，多花些时间来考虑是必要的。但在开始考虑这个问题时，你首先要知道的是考研的整个流程，它要经过哪些阶段，在什么时间要做什么事情，这些都要心中有数，以便及早安排，计划周详。考研大致要经过以下过程。',
+            questionTeam: [
+                {
+                    isMust: true,
+                    questType: 1,  //1 单选 2 多选 3 填空
+                    questTitle: '您的职业',
+                    questOption: [
+                        '18岁以下',
+                        '18-25',
+                        '25-35',
+                        '35-50',
+                        '50岁以上'
+                    ],
+                    answerNum: [
+                        3,
+                        4,
+                        5,
+                        1
+                    ]
+                },
+                {
+                    isMust: false,
+                    questTitle: '您的爱好',
+                    questType: 2,
+                    questOption: [
+                        '音乐',
+                        '阅读',
+                        '旅游',
+                        '电影'
+                    ],
+                    answerNum: [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                {
+                    questType: 3,
+                    isMust: true,
+                    questTitle: '您的职业是?',
+                    answerValidNum: 12
+                }
+            ]
+        }  
+    ]
+};

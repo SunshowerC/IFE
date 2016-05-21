@@ -20,11 +20,26 @@ var checkboxEvent = function(){
 /*
 * 加载时渲染表格
  */
-var loadedRender = function($container, researchs) {
+var loadedRender = function($container, obj) {
+	var researchs = obj.paperMsg;
 	var newQuestHref = '#',
 	    editQuestHref = '#',
 	    checkQuestHref = '#',
 	    checkDataHref = '#';
+
+	var checkState = function(item) {
+		if (item == 'state') {
+			switch(researchs[i].state) {
+				case 1 : return  '<td >未发布</td>' ;
+				case 2 : return  '<td class="active">发布中</td>' ;
+				case 3 : return  '<td >已结束</td>' ;
+			}
+
+		} else {
+			return researchs[i].state == 1 ? '查看问卷' : '查看数据';			
+		}
+	}
+
 
 	$container.append(
 		'<table class="questionnaireTab">' +
@@ -58,61 +73,75 @@ var loadedRender = function($container, researchs) {
 				'<td><input type="checkbox" id=' +researchs[i].researchID + ' /></td>' +
 				'<td><label for=' + researchs[i].researchID + '>' + researchs[i].researchTitle +'</label></td>' +
 				'<td>'+ researchs[i].deadline +'</td>' +
-				function(){
-					return researchs[i].state == '发布中' ? '<td class="active">'+ researchs[i].state +'</td>' : '<td>'+ researchs[i].state +'</td>';
-				}()
+					checkState('state')
 				+ '<td colspan="2">' +
-					'<a href=' + editQuestHref + '>编辑</a> ' +
+					'<a href=' + editQuestHref + ' class="editQuest">编辑</a> ' +
 					'<a href="##" class="deleteQuest" >删除</a> ' +
-					'<a href="#">' + '查看问卷' + '</a>' +
+					'<a href="#" class="checkData">' + checkState('check') + '</a>' +
 				'</td>' +
 			'</tr>');
-
 	}
 
 	checkboxEvent();   //checkbox 全选事件绑定
 
+
 	/*
 	*弹出框设置
 	 */
-	$('.questionnaireTab ').on('click','a[class*="deleteQuest"]',function(e){
+	$('.questionnaireTab ').on('click','a',function(e){
 		var This = this;  //This 为 <a>
 		var thisTr = $(This).parents('tr'); 
 
-		$('#dialog-modal').dialog({
-			title: '系统提示',
-			content: '确定要删除此问卷？',
-			height: 200,
-			button: {
-				'确定': function(){
-					if (e.target.className == 'deleteQuest') {  // tbody 的删除按钮
-						$(This).parents('tr').remove();
-						var thisQuestId = $(This).parents('tr').find('input').attr('id');
-						researchs.forEach(function(item,index,array){
-							if (thisQuestId == item.researchID ) {
-								// delete researchs[index];
-								researchs.splice(index,1);
-								// console.log(researchs)
-							}
-						});
-
-					} else {   //tfoot 的删除按钮
-						var $checkedInput = $(".questionnaireTab tbody input:checked");
-						$checkedInput.parents('tr').remove();
-						$checkedInput.each(function(index,element){
+		if ( this.className.indexOf('deleteQuest') > -1 ) {
+			$('#dialog-modal').dialog({
+				title: '系统提示',
+				content: '确定要删除此问卷？',
+				height: 200,
+				button: {
+					'确定': function(){
+						if (e.target.className == 'deleteQuest') {  // tbody 的删除按钮
+							$(This).parents('tr').remove();
+							var thisQuestId = thisTr.find('input').attr('id');
 							researchs.forEach(function(item,index,array){
-								if (element.id == item.researchID) {
+								if (thisQuestId == item.researchID ) {
+									// delete researchs[index];
 									researchs.splice(index,1);
+									localStorage.setItem('data',JSON.stringify(obj) ) ;
+									console.log(researchs)
 								}
-							})
-						})
+							});
+
+						} else {   //tfoot 的删除按钮
+							var $checkedInput = $(".questionnaireTab tbody input:checked");
+							$checkedInput.parents('tr').remove();
+							$checkedInput.each(function(index,element){
+								researchs.forEach(function(item,index,array){
+									if (element.id == item.researchID) {
+										researchs.splice(index,1);
+										localStorage.setItem('data',JSON.stringify(obj) ) ;
+									}
+								});
+							});
+							console.log(researchs)
+						}
+					},
+					'取消': function(){
 					}
-				},
-				'取消': function(){
-				}
-			}		
-		})
-	
+				}		
+			})			
+		} else if( this.className == 'editQuest' || this.className == 'checkData' ) {
+			localStorage.activeResearch = thisTr.find('input').attr('id');
+			console.log(localStorage);
+			// window.open('#','_blank');
+			// window.location.href = 'http://www.google.com'
+		} else if ( this.className == 'newQuest' ) {
+			localStorage.activeResearch = '' ;
+			console.log(localStorage);
+			// window.open('##');
+		} 
+
+
+		e.preventDefault();
 		e.stopPropagation();		
 	})			
 }
