@@ -24,9 +24,9 @@
 	模拟数据
 	 */
 //	localStorage = JSON.stringify(data) ;
-	console.log(JSON.parse( localStorage.getItem('data')).paperMsg);
+	console.log(localStorage.getItem('data'));
 	//测试，当没有问卷时，自动添加预设的三个问卷
-	if ( !JSON.parse( localStorage.getItem('data')).paperMsg.length) {
+	if ( !localStorage.getItem('data')) {
 		localStorage.setItem('data',JSON.stringify(data) ) ;
 	}
 	// console.log(localStorage);
