@@ -23,16 +23,14 @@
 	/*
 	模拟数据
 	 */
-//	localStorage = JSON.stringify(data) ;
-	console.log(localStorage.getItem('data'));
+
+	// console.log(localStorage.getItem('data'));
 	//测试，当没有问卷时，自动添加预设的三个问卷
 	if ( !localStorage.getItem('data')) {
 		localStorage.setItem('data',JSON.stringify(data) ) ;
 	}
-	// console.log(localStorage);
+
 	var researchs = JSON.parse( localStorage.getItem('data') ) ;
-
-
 	loadedRender($('.questionnaireList'),researchs); //表格渲染		
 
 	</script>

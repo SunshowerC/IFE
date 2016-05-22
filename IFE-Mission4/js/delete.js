@@ -21,11 +21,11 @@ var checkboxEvent = function(){
 * 加载时渲染表格
  */
 var loadedRender = function($container, obj) {
-	var researchs = obj.paperMsg || [];
-	var newQuestHref = '#',
-	    editQuestHref = '#',
-	    checkQuestHref = '#',
-	    checkDataHref = '#';
+	var researchs = obj.paperMsg ;
+	var newQuestHref = 'editQuest.html',
+	    editQuestHref = 'editQuest.html',
+	    checkDataHref = 'checkData.html';
+
 
 	var checkState = function(item) {
 		if (item == 'state') {
@@ -132,12 +132,16 @@ var loadedRender = function($container, obj) {
 		} else if( this.className == 'editQuest' || this.className == 'checkData' ) {
 			localStorage.activeResearch = thisTr.find('input').attr('id');
 			console.log(localStorage);
-			// window.open('#','_blank');
-			// window.location.href = 'http://www.google.com'
+			if (this.className == 'editQuest') {
+				window.location.href = editQuestHref;
+			} else {
+				window.location.href = checkDataHref;
+			}
+			
 		} else if ( this.className == 'newQuest' ) {
 			localStorage.activeResearch = '' ;
 			console.log(localStorage);
-			// window.open('##');
+			window.location.href = newQuestHref;
 		} 
 
 
