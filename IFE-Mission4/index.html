@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jq-drag.js"></script>
 	<script type="text/javascript" src="js/pop.js"></script>
-	<!-- <script type="text/javascript" src="js/config.js"></script> -->
+	<script type="text/javascript" src="js/config.js"></script>
 </head>
 <body>
 	<header>
@@ -35,7 +35,7 @@
 		var researchs = JSON.parse( localStorage.getItem('data') ) ;
 		loadedRender($('.questionnaireList'),researchs); //表格渲染		 	
 	}
-	
+
 	//没有模拟数据时，需要提供一个空的对象
 	console.log(typeof data)
 	if (typeof data == 'undefined') {
@@ -44,7 +44,10 @@
 
 	init(data);
 
-	
+	/*
+	* 测试结果，有模拟数据，如config.js 时，加载模拟数据中的问卷。
+	* 没有模拟数据时，问卷数为0
+	 */
 
 	</script>
 </body>
