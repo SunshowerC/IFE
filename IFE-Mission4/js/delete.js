@@ -92,57 +92,57 @@ var loadedRender = function($container, obj) {
 		var This = this;  //This 为 <a>
 		var thisTr = $(This).parents('tr'); 
 
-		if ( this.className.indexOf('deleteQuest') > -1 ) {
-			$('#dialog-modal').dialog({
-				title: '系统提示',
-				content: '确定要删除此问卷？',
-				height: 200,
-				button: {
-					'确定': function(){
-						if (e.target.className == 'deleteQuest') {  // tbody 的删除按钮
-							$(This).parents('tr').remove();
-							var thisQuestId = thisTr.find('input').attr('id');
-							researchs.forEach(function(item,index,array){
-								if (thisQuestId == item.researchID ) {
-									// delete researchs[index];
-									researchs.splice(index,1);
-									localStorage.setItem('data',JSON.stringify(obj) ) ;
-									console.log(researchs)
-								}
-							});
-
-						} else {   //tfoot 的删除按钮
-							var $checkedInput = $(".questionnaireTab tbody input:checked");
-							$checkedInput.parents('tr').remove();
-							$checkedInput.each(function(index,element){
+			if ( this.className.indexOf('deleteQuest') > -1 ) {
+				$('#dialog-modal').dialog({
+					title: '系统提示',
+					content: '确定要删除此问卷？',
+					height: 200,
+					button: {
+						'确定': function(){
+							if (e.target.className == 'deleteQuest') {  // tbody 的删除按钮
+								$(This).parents('tr').remove();
+								var thisQuestId = thisTr.find('input').attr('id');
 								researchs.forEach(function(item,index,array){
-									if (element.id == item.researchID) {
+									if (thisQuestId == item.researchID ) {
+										// delete researchs[index];
 										researchs.splice(index,1);
 										localStorage.setItem('data',JSON.stringify(obj) ) ;
+										console.log(researchs)
 									}
 								});
-							});
-							console.log(researchs)
+
+							} else {   //tfoot 的删除按钮
+								var $checkedInput = $(".questionnaireTab tbody input:checked");
+								$checkedInput.parents('tr').remove();
+								$checkedInput.each(function(index,element){
+									researchs.forEach(function(item,index,array){
+										if (element.id == item.researchID) {
+											researchs.splice(index,1);
+											localStorage.setItem('data',JSON.stringify(obj) ) ;
+										}
+									});
+								});
+								console.log(researchs)
+							}
+						},
+						'取消': function(){
 						}
-					},
-					'取消': function(){
-					}
-				}		
-			})			
-		} else if( this.className == 'editQuest' || this.className == 'checkData' ) {
-			localStorage.activeResearch = thisTr.find('input').attr('id');
-			console.log(localStorage);
-			if (this.className == 'editQuest') {
-				window.location.href = editQuestHref;
-			} else {
-				window.location.href = checkDataHref;
-			}
-			
-		} else if ( this.className == 'newQuest' ) {
-			localStorage.activeResearch = '' ;
-			console.log(localStorage);
-			window.location.href = newQuestHref;
-		} 
+					}		
+				});			
+			} else if( this.className == 'editQuest' || this.className == 'checkData' ) {
+				localStorage.activeResearch = thisTr.find('input').attr('id');
+				console.log(localStorage);
+				if (this.className == 'editQuest') {
+					window.location.href = editQuestHref;
+				} else {
+					window.location.href = checkDataHref;
+				}
+				
+			} else if ( this.className == 'newQuest' ) {
+				localStorage.activeResearch = '' ;
+				console.log(localStorage);
+				window.location.href = newQuestHref;
+			} 
 
 
 		e.preventDefault();
