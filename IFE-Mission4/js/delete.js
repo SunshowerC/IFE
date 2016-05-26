@@ -70,8 +70,8 @@ var loadedRender = function($container, obj) {
 	for (var i = 0, len = researchs.length; i < len; i++) {
 		$tbody.append(
 			'<tr>' +
-				'<td><input type="checkbox" id=' +researchs[i].researchID + ' /></td>' +
-				'<td><label for=' + researchs[i].researchID + '>' + researchs[i].researchTitle +'</label></td>' +
+				'<td><input type="checkbox" id=' +researchs[i].researchId + ' /></td>' +
+				'<td><label for=' + researchs[i].researchId + '>' + researchs[i].researchTitle +'</label></td>' +
 				'<td>'+ researchs[i].deadline +'</td>' +
 					checkState('state')
 				+ '<td colspan="2">' +
@@ -103,7 +103,7 @@ var loadedRender = function($container, obj) {
 								$(This).parents('tr').remove();
 								var thisQuestId = thisTr.find('input').attr('id');
 								researchs.forEach(function(item,index,array){
-									if (thisQuestId == item.researchID ) {
+									if (thisQuestId == item.researchId ) {
 										// delete researchs[index];
 										researchs.splice(index,1);
 										localStorage.setItem('data',JSON.stringify(obj) ) ;
@@ -116,7 +116,7 @@ var loadedRender = function($container, obj) {
 								$checkedInput.parents('tr').remove();
 								$checkedInput.each(function(index,element){
 									researchs.forEach(function(item,index,array){
-										if (element.id == item.researchID) {
+										if (element.id == item.researchId) {
 											researchs.splice(index,1);
 											localStorage.setItem('data',JSON.stringify(obj) ) ;
 										}
@@ -130,7 +130,7 @@ var loadedRender = function($container, obj) {
 					}		
 				});			
 			} else if( this.className == 'editQuest' || this.className == 'checkData' ) {
-				localStorage.activeResearch = thisTr.find('input').attr('id');
+				localStorage.activeResearchId = thisTr.find('input').attr('id');
 				console.log(localStorage);
 				if (this.className == 'editQuest') {
 					window.location.href = editQuestHref;
@@ -139,7 +139,7 @@ var loadedRender = function($container, obj) {
 				}
 				
 			} else if ( this.className == 'newQuest' ) {
-				localStorage.activeResearch = '' ;
+				localStorage.activeResearchId = '' ;
 				console.log(localStorage);
 				window.location.href = newQuestHref;
 			} 

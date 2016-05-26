@@ -103,7 +103,7 @@
 				},
 				modal: true,
 				drag: true
-			}
+			};
 			$.extend(defaultOptions,options);
 
 			var newPop = new Pop(defaultOptions);
@@ -112,31 +112,9 @@
 		}
 	});	
 
-})()
+})();
 
 
 
 
-/*
-*@param titlt {string}
-*@param content {string}
-*@param height {number}
-*@param button {object}
-*
-* button 的键值对分别对应按钮和点击按钮后的回调函数
- */
-
-/*
-例子：
-$('#dialog-modal').dialog({
-	title: '系统提示',
-	content: '确定要删除此问卷？',
-	height: 200,
-	button: {
-		'确定': function(){},
-		'取消': function(){}
-	}		
-});	
-
-*/
 

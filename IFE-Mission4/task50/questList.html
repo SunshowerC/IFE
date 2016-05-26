@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>微型调查问卷平台</title>
+
+	<link rel="stylesheet" type="text/css" href="css/questionList/questionList.css">
+	<link rel="stylesheet" type="text/css" href="css/questionList/pop.css">
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/questionnaireList/jq-drag.js"></script>
+	<script type="text/javascript" src="js/questionnaireList/pop.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+
+</head>
+<body>
+	<header>
+		<h1>问卷管理</h1><h2>我的问卷</h2>
+	</header>
+	<div class="questionnaireList">
+
+	</div>
+	<div id="dialog-modal"></div>
+	<script type="text/javascript" src="js/questionnaireList/delete.js"></script>
+	<script>
+	/*
+	模拟数据
+	 */
+	function init(data) {
+
+		//如果localStorage.data 是空的，初始化赋值填充数据
+		// console.log(localStorage.getItem('data'))
+		if ( !localStorage.getItem('paperMsg')) {
+			localStorage.setItem('paperMsg',JSON.stringify(data.paperMsg) ) ;
+			console.log('set localStorage.paperMsg successfully')
+		}
+
+		var researchs = JSON.parse( localStorage.getItem('paperMsg') ) ;
+
+		loadedRender($('.questionnaireList'),researchs); //表格渲染		 	
+	}
+
+	//没有模拟数据时，需要提供一个空的对象
+	console.log(typeof data)
+	if (typeof data == 'undefined') {
+		var data = {paperMsg:[]};
+	}
+
+	init(data);
+
+	/*
+	* 测试结果，有模拟数据，如config.js 时，加载模拟数据中的问卷。
+	* 没有模拟数据时，问卷数为0
+	 */
+
+	</script>
+</body>
+</html>
