@@ -118,7 +118,10 @@ var loadedRender = function($container, researchs) {
 		var This = this;  //This 为 <a>
 		var thisTr = $(This).parents('tr'); 
 
+		console.log('1')
 		if ( this.className.indexOf('deleteQuest') > -1 ) {
+			console.log('2')
+
 			$('#dialog-modal').dialog({
 				title: '系统提示',
 				content: '确定要删除此问卷？',
@@ -175,6 +178,7 @@ var loadedRender = function($container, researchs) {
 				break;
 		}
 
+		console.log('3')
 
 		e.preventDefault();
 		e.stopPropagation();		
