@@ -6,19 +6,42 @@ function GalleryWall(options){
 	this.col =options.col || 5;
 	this.gap = options.gap / 2 || 10 ;
 	this.init();
-	// this.appendPhoto('abc');
 }
 
 GalleryWall.prototype.init = function() {
+/*	var galleryWrap = document.createElement('div');
+	galleryWrap.setAttribute('class','gallery');
+	var fragmentHtml  = '';
 	for(var i = 0 ; i < this.col ; i++) {
-		var newColumn = document.createElement('div');
-		newColumn.setAttribute('class','gallery-col');
-		newColumn.style.cssText = 'width:'+ 100 / this.col + '%;' +
-								  'padding: 0 '  + this.gap + 'px;' ;
-		// newColumn.style.width = 
-		// newColumn.style.padding = '0 ' + this.gap + 'px' ;
-		this.elem.appendChild(newColumn);
+		fragmentHtml += '<div class = "gallery-col"' +
+						'style = "width:' + 100/this.col +'%; padding: 0 ' + this.gap + 'px;" >' +
+						'</div>';
 	}
+	galleryWrap.innerHTML = fragmentHtml;
+	this.elem.appendChild(galleryWrap);
+	this.columns = galleryWrap.querySelectorAll('.gallery-col');*/
+
+	this.createMainDom();
+	this.popUp();
+}
+
+GalleryWall.prototype.createMainDom = function() {
+	var galleryWrap = document.createElement('div');
+	galleryWrap.setAttribute('class','gallery');
+	var fragmentHtml  = '';
+	for(var i = 0 ; i < this.col ; i++) {
+		fragmentHtml += '<div class = "gallery-col"' +
+						'style = "width:' + 100/this.col +'%; padding: 0 ' + this.gap + 'px;" >' +
+						'</div>';
+	}
+	galleryWrap.innerHTML = fragmentHtml;
+	this.elem.appendChild(galleryWrap);
+	this.columns = galleryWrap.querySelectorAll('.gallery-col');
+
+	var mask = document.createElement('div');
+	mask.setAttribute('class','mask');
+	this.mask = mask;
+	document.body.appendChild(mask);
 }
 
 GalleryWall.prototype.appendPhoto = function(photo) {
@@ -30,48 +53,87 @@ GalleryWall.prototype.appendPhoto = function(photo) {
 		'<img src=' + photo.src + '>' +
 	'</div>' +
 	'<div class="gallery-item-info">' +
-		'<h4 class="gallery-title">' + photo.src + '</h4>' +
+		'<h4 class="gallery-title">' + photo.src.substr(30,5) + '</h4>' +
 		'<p class="gallery-description">' + photo.description + '</p>' +
 	'</div>' ;
 	this.getMinHeight().appendChild(newPhoto);
 }
 
 GalleryWall.prototype.getMinHeight = function() {
-	var columns = this.elem.querySelectorAll('.gallery-col');
-	var min = columns[0];
-	for (var i = 1, len = columns.length; i < len; i++) {
-		if (columns[i].clientHeight < min.clientHeight) {
-		  min = columns[i];
+	var minColumn = this.columns[0];
+	for (var i = 1, len = this.columns.length; i < len; i++) {
+		if (this.columns[i].clientHeight < minColumn.clientHeight) {
+		  minColumn = this.columns[i];
 		}
 	}
+
 	// console.log(min);
-	return min;
+	return minColumn;
+}
+
+GalleryWall.prototype.popUp = function() {
+	var This = this;
+	This.elem.onclick = function(e) {
+		var target = e.target;
+		if (target.tagName.toLowerCase() == 'img' ) {
+			This.mask.style.display = 'block';
+			This.mask.innerHTML = '';
+			var img = document.createElement('img');
+			img.setAttribute('src',target.src );
+			This.mask.appendChild(img);
+			setSize(img);
+			document.body.style.overflowY = 'hidden';
+		}
+
+		e.stopPropagation()	;
+		document.onclick = function(e) {
+			This.mask.style.display = 'none';
+			document.body.style.overflowY = '';
+			document.onclick = null;
+		}		
+	}
+
+	function setSize(target) {
+		var width = target.offsetWidth;
+			height = target.offsetHeight;
+	    var imageAspectRatio = width / height;
+	    var windowAspectRatio = innerWidth / innerHeight;
+	    // console.log(height + ',' + innerHeight);
+	    // console.log(imageAspectRatio+ '<'+ windowAspectRatio)
+		if (height > innerHeight && imageAspectRatio < windowAspectRatio) {
+			target.style.height = innerHeight - 100 + 'px';
+		}
+
+		if (width > innerWidth && imageAspectRatio > windowAspectRatio) {
+			target.style.width = innerWidth - 100 + 'px';
+		}
+	}
 }
 
 
 var newGallerywall = new GalleryWall({
-	elem : '.gallery',
-	col: 3,
-	gap: '10'
+	elem : '.container',
+	col: 4,
+	gap: '30'
 
 });
 
-var img = {
-	src:'./img/0.jpg',
-	title:'planet',
-	description: '星球'
+
+window.onload = function() {
+	for (var i = 0; i < 15 ; i++) {
+		getPhoto();
+	}
 }
 
+var offsetDistance = 100;
 
-var btn = document.querySelector('.btn button');
-var i = 0;
-
-btn.onclick = function() {
-	img.src = './img/' + (i++) +'.jpg';
-	// newGallerywall.appendPhoto(img)
-	getPhoto();
+window.onscroll = function() {
+	var screenHeight = (document.documentElement.scrollTop || document.body.scrollTop) +(document.documentElement.clientHeight || document.body.clientHeight);
+	var docHeight = document.body.scrollHeight;
+	if (docHeight < screenHeight + offsetDistance ) {
+		getPhoto();
+	}
 }
-
 
 
 

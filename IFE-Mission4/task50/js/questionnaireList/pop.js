@@ -96,7 +96,7 @@
 				width: '20%' ,
 				height: '200' ,
 				title: '',
-				body: '',
+				content: '',
 				button: {
 					'确定': function(){},
 					'取消': function(){}
