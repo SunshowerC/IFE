@@ -1,5 +1,5 @@
 
-;(function(){
+// ;(function(){
 	function Pop(options) {
 		for(var name in options) {
 			this[name] = options[name];
@@ -112,7 +112,7 @@
 		}
 	});	
 
-})();
+// })();
 
 
 

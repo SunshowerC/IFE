@@ -2,6 +2,7 @@
  * Created by MaxWell on 2016/5/21.
  */
 
+var test = [];
 
 var data = {
     // activeResearchId : 1 ,

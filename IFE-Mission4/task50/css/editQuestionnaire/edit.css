@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@import "../questionList/header.css";
+
+
 * {
   margin: 0;
   padding: 0;
@@ -105,9 +108,9 @@ body {
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #eee;
-  -webkit-box-shadow: 5px 2px 10px #005;
-  -moz-box-shadow: 5px 2px 10px #005;
-  box-shadow: 5px 2px 10px #005; }
+  -webkit-box-shadow: 0px 0px 10px #666;
+  -moz-box-shadow: 0px 0px 10px #666;
+  box-shadow: 0px 0px 10px #666; }
   #middle-content h3 {
     outline: none;
     text-align: center;

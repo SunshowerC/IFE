@@ -9,20 +9,29 @@
     <script src="js/questionnaireList/jq-drag.js"></script> -->
 <!--     <link rel="stylesheet" type="text/css" href="css/answerQuestionnaire/lib/home.css"> -->
     <link rel="stylesheet" type="text/css" href="css/answerQuestionnaire/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/answerQuestionnaire/header.css">
+    <link rel="stylesheet" type="text/css" href="css/questionList/header.css">
     <link rel="stylesheet" type="text/css" href="css/answerQuestionnaire/main.css">
     <style>
         label{
             display:block;
         }
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        header h1,header h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+        }
     </style>
 
 </head>
 <body>
-    <header>
-        <span class="logo">问卷管理</span>
-        <span class="hd_title">我的问卷</span>
-    </header>
+<header>
+    <h1><a  href="questList.html">问卷管理</a></h1><h2>我的问卷</h2>
+</header>
     <div id="dialog-modal"></div>
     <script type="text/template" id="template">
         <div class="container">

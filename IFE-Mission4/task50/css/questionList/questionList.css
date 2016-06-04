@@ -1,3 +1,7 @@
+
+@import "header.css";
+@import "pop.css";
+
 .transition, .questionnaireTab a, .questionnaireTab tbody tr {
   -webkit-transition-duration: .7s;
   -moz-transition-duration: .7s;
@@ -21,35 +25,6 @@
 
 body {
   background: #efefef;
-}
-
-header {
-  background-color: #ee7419;
-  color: white;
-}
-header h1, header h2 {
-  display: inline-block;
-  height: 50px;
-  line-height: 50px;
-  margin-left: 80px;
-}
-header h1 {
-  font-size: 26px;
-}
-header h1:before {
-  content: '?';
-  text-align: center;
-  display: inline-block;
-  width: 26px;
-  line-height: 1;
-  background: #fff;
-  color: #ee7419;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-header h2 {
-  font-size: 19px;
-  font-weight: normal;
 }
 
 .questionnaireTab {

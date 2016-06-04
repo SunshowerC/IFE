@@ -1,5 +1,5 @@
 
-;(function(){
+// ;(function(){
 	$.fn.extend({
 		dragging:function(data){
 			var $this = $(this);
@@ -64,4 +64,4 @@
 		}
 	});
 
-})()
+// })()
