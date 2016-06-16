@@ -45,6 +45,12 @@ body.noscroll {
     border-radius: 5px 5px 0 0;
 }
 
+.gallery-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* 
 
 .btn {
