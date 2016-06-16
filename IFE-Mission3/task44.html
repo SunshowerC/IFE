@@ -32,12 +32,15 @@
     addPhoto(newGallerywall);
 
     var offsetDistance = 100;
-    window.onscroll = function () {
+    var scrollHandle = function () {
         var screenHeight = (document.documentElement.scrollTop || document.body.scrollTop) + (document.documentElement.clientHeight || document.body.clientHeight);
         var docHeight = document.body.scrollHeight;
         if (docHeight < screenHeight + offsetDistance) {
             addPhoto(newGallerywall);
         }
+    }
+    window.onscroll = function () {
+        throttle(scrollHandle);
     }
 
 

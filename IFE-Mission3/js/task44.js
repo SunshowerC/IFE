@@ -82,13 +82,13 @@
 				img.setAttribute('src',target.src );
 				This.mask.appendChild(img);
 				setSize(img);
-				document.body.style.overflowY = 'hidden';
+				document.body.setAttribute('class','noscroll');
 			}
 
 			e.stopPropagation()	;
 			document.onclick = function(e) {
 				This.mask.style.display = 'none';
-				document.body.style.overflowY = '';
+				document.body.removeAttribute('class');
 				document.onclick = null;
 			}
 		}

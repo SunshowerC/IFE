@@ -3,6 +3,8 @@
 
 
 /*
+
+伪图片处理请求
 function getPhoto(){
 	var request = new XMLHttpRequest();
 	var count = Math.ceil( Math.random() * 5000 );
@@ -82,9 +84,52 @@ function getJSONP(url,callback) {
 }
 getJSONP.counter = 0;
 
+//节流
+function throttle(method,context) {
+	clearTimeout(method.tId);
+	method.tId = setTimeout(function () {
+		method.call(context);
+	}, 300);
+}
 
 
+var photoAPI = {
+	url: "http://www.wookmark.com/api/json?type=source&sourceId=",
+	id: 0,
+	currentLength: 0
+}
 
+function addPhoto(galleryWall) {
+	photoAPI.id = Math.ceil( Math.random() * 1000 );
+	console.log(photoAPI.id)
+	getJSONP(photoAPI.url + photoAPI.id ,function (response) {
+	// 	getJSONP('http://www.wookmark.com/api/json?type=source&sourceId=12',function (response) {
+		//  var res = JSON.stringify(response)
+		console.log(response)
+
+		var list = response ;
+
+		//确保第一次加载的图片量足够多，能产生滚动条
+
+
+		list.forEach(function (item) {
+			galleryWall.appendPhoto({
+				src: item.image,
+				title: item.title ,
+				description: ''
+			});
+		});
+
+		if (photoAPI.currentLength < 20) {
+			photoAPI.currentLength += list.length;
+			addPhoto(galleryWall);
+			console.log(photoAPI.currentLength)
+		}
+	});
+}
+
+/*
+//tngou 图片API
 var photoAPI = {
 	url: "http://www.tngou.net/tnfs/api/list?",
 	id: 0,
@@ -113,6 +158,7 @@ function addPhoto(galleryWall) {
 	});
 }
 
+*/
 
 
 
