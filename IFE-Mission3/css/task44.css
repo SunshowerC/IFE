@@ -43,6 +43,7 @@ body.noscroll {
 .gallery-image img {
     width: 100%;
     border-radius: 5px 5px 0 0;
+    cursor: zoom-in;
 }
 
 .gallery-title {
@@ -88,6 +89,7 @@ body.noscroll {
 
 .mask img {
     margin: 50px;
+    cursor: zoom-out;
 }
 
 
