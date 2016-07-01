@@ -61,10 +61,10 @@ var data = {
         //下一个问卷
         {
             researchId: 2,
-            researchTitle: '关于本天才的调查问卷',
+            researchTitle: '关于大学生的调查问卷',
             deadline: '2016-06-16',
             state: 1,  // 1：未发布 2：发布中 3：已结束
-            description: '本天才才不是傻逼',
+            description: '……',
             questionTeam: [
                 {
                     isMust: false,
@@ -72,8 +72,8 @@ var data = {
                     questTitle: '您的偶像',
                     questOption: [
                         '自己',
-                        '没有偶像',
-                        '关你屁事'
+                        '没有偶像'
+
                         
                     ],
                     answerNum: [
@@ -90,7 +90,7 @@ var data = {
                     questOption: [
                         '智商很感人',
                         '智商非常感人',
-                        '傻逼一个',
+                        '好人一个',
                         '哦'
                     ],
                     answerNum: [
@@ -111,10 +111,10 @@ var data = {
 
         {
             researchId: 3,
-            researchTitle: '关于尔等傻逼的调查问卷',
+            researchTitle: '关于大学的调查问卷',
             deadline: '2016-03-11',
             state: 3,  // 1：未发布 2：发布中 3：已结束
-            description: '简单关于傻逼的一些莫名其妙奇奇怪怪的调查',
+            description: '大学中一些莫名其妙奇奇怪怪的调查',
             questionTeam: [
                 {
                     isMust: true,
